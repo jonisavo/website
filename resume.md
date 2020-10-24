@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Resume
+permalink: /resume/
 ---
 
 A student of Information Technology at Metropolia University of Applied Sciences. Eager to learn new things. Unstoppable with coffee.
