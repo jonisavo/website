@@ -4,27 +4,16 @@ title: Blog
 subtitle: Ramblings of a mad ICT student
 ---
 
-<div>
-    {% assign postsCategory = site.posts | group_by_exp:"post", "post.categories"  %}
-        {% for category in postsCategory %}
-        <h4 class="post-teaser__month">
-            <strong>
-                {% if category.name %} 
-                    - - - - -  {{ category.name }} - - - - - 
-                {% else %} 
-                    {{ Print }} 
-                {% endif %}
-            </strong>
-        </h4>
-        <ul class="list-posts">
-            {% for post in category.items %}
-                <li class="post-teaser">
-                    <a href="{{ post.url | prepend: site.baseurl }}">
-                        <span class="post-teaser__title">{{ post.title }}</span>
-                        <span class="post-teaser__date">{{ post.date | date: "%d %B %Y" }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+{% assign post_categories = site.posts | group_by_exp:"post", "post.categories"  %}
+{% if post_categories.size > 0 %}
+    {% for category in post_categories %}
+        {% include blog/category-label.html category=category %}
+        {% if category.items.size > 0 %}
+            {% include blog/category-item-list.html category=category %}
+        {% else %}
+            <p class="empty-post-list">There is nothing here.</p>
+        {% endif %}
     {% endfor %}
-</div>
+{% else %}
+    <p class="empty-post-list">There is nothing here yet. Please check back soon!</p>
+{% endif %}

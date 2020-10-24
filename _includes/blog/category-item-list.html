@@ -1,0 +1,10 @@
+<ul class="list-posts">
+    {% for post in include.category.items %}
+        <li class="post-teaser">
+            <a href="{{ post.url | prepend: site.baseurl }}">
+                <span class="post-teaser_title">{{ post.title }}</span>
+                <span class="post-teaser_date">{{ post.date | date: "%d %B %Y" }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
