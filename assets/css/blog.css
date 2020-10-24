@@ -2,7 +2,7 @@
 
 .list-posts {
   list-style-type: none;
-  padding: 0px;
+  padding: 0;
 }
 
 .post-teaser {
@@ -35,6 +35,22 @@
 
 @media (max-width: 600px) {
   .post-category-label {
+    font-size: 100%;
+    margin-top: 5px;
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .post-teaser__title {
+    font-size: 140%;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .post-teaser_date {
     font-size: 100%;
     margin-top: 5px;
     float: none;
