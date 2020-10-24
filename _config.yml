@@ -12,7 +12,7 @@ author:
 
 collections:
   posts:
-    permalink: /blog/:categories/:year/:month/:day/:title
+    permalink: /blog/:categories/:year/:month/:day/:title/
 
 exclude:
   - LICENSE
