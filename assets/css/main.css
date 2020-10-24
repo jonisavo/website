@@ -117,15 +117,21 @@
     text-align: center;
   }
 
-  .page-title__text {
+  .page-title_text {
     font-weight: 700;
     font-size: 135%;
     font-family: 'Quicksand', sans-serif;  
   }
 
-  .page-title__subtitle {
+  .page-title_subtitle {
     font-weight: 400;
     font-size: 75%;
+    color: #acacac;
+  }
+
+  .page-title_date {
+    font-weight: 300;
+    font-size: 65%;
     color: #acacac;
   }
 
@@ -164,18 +170,18 @@
   }
 
 /* =Post page *//*************************************************************/
-  .about {
+  footer {
     color: #acacac;
     text-align: center;
     line-height: 24px;
   }
 
-  .about__devider {
+  .footer_divider {
     font-size: 100%;
     letter-spacing: 9.09px;
   }
 
-  .about__text {
+  .footer_text {
     font-size: 100%;
   }
 

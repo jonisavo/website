@@ -5,4 +5,7 @@
     {% if page.subtitle %}
         <div class="page-title_subtitle">{{ page.subtitle }}</div>
     {% endif %}
+    {%if page.date %}
+        <div class="page-title_date">{{ page.date | date_to_string }}</div>
+    {% endif %}
 </h1>
