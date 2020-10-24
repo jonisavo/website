@@ -5,7 +5,7 @@ subtitle: Ramblings of a mad ICT student
 permalink: /blog/
 ---
 
-{% assign post_categories = site.posts | group_by_exp:"post", "post.categories"  %}
+{% assign post_categories = site.posts | group_by_exp:"post", "post.categories" %}
 {% if post_categories.size > 0 %}
     {% for category in post_categories %}
         {% include blog/category-label.html category=category %}
