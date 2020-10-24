@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% include meta_tags/base.html %}
-        {% include externals/styling.html %}
+        {% include head/meta.html %}
+        {% include head/styling.html %}
     </head>
     <body>
         <div class="wrapper">
@@ -10,6 +10,6 @@
             {{ content }}
             {% include footer.html %}
         </div>
-        {% include externals/scripting.html %}
+        {% include scripts/highlight.html %}
     </body>
 </html>
