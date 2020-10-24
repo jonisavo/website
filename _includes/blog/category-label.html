@@ -1,12 +1,7 @@
 <h4 class="post-category-label">
     <strong>
         {% if include.category.name %} 
-            - - - - -
-            {{ include.category.name }}
-            <a href="{{ site.baseurl }}/feed/{{include.category.name}}.xml" target="_blank">
-                <i class="fa fa-rss"></i>
-            </a> 
-            - - - - - 
+            - - - - -  {{ include.category.name }}  - - - - - 
         {% else %} 
             {{ Print }} 
         {% endif %}
