@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Resume
+description: The resume of a mad ICT student
 permalink: /resume/
 ---
 
