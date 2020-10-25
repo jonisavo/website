@@ -7,14 +7,14 @@ permalink: /blog/
 
 {% assign post_categories = site.posts | group_by_exp:"post", "post.categories" %}
 {% if post_categories.size > 0 %}
-    {% for category in post_categories %}
-        {% include blog/category-label.html category=category %}
-        {% if category.items.size > 0 %}
-            {% include blog/category-item-list.html category=category %}
-        {% else %}
-            <p class="empty-post-list">There is nothing here.</p>
-        {% endif %}
-    {% endfor %}
+  {% for category in post_categories %}
+    {% include blog/category-label.html category=category %}
+      {% if category.items.size > 0 %}
+        {% include blog/category-item-list.html category=category %}
+      {% else %}
+        <p class="empty-post-list">There is nothing here.</p>
+      {% endif %}
+  {% endfor %}
 {% else %}
-    <p class="empty-post-list">There is nothing here yet. Please check back soon!</p>
+  <p class="empty-post-list">There is nothing here yet. Please check back soon!</p>
 {% endif %}
