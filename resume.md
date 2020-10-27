@@ -3,6 +3,8 @@ layout: page
 title: Resume
 description: The resume of a mad ICT student
 permalink: /resume/
+css:
+  - resume
 ---
 
 ![My own face](/assets/img/small_face.png)

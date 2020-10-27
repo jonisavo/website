@@ -3,6 +3,8 @@ layout: page
 title: Blog
 subtitle: Ramblings of a mad ICT student
 permalink: /blog/
+css:
+  - blog
 ---
 
 {% assign post_categories = site.posts | group_by_exp:"post", "post.categories" %}
