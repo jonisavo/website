@@ -32,13 +32,6 @@ library designed for immigrants.
 ## IT background
 2019 - Present
 {: .resume-side}
-### Creating a chat bot with Python
-I developed an automated bot for Discord, a popular instant messaging service. Python’s asynchronous
-capabilities and the discord.py API were utilized to interface with the chat platform. You can view the
-source [here][zedrogames-bot].
-
-2019 - Present
-{: .resume-side}
 ### System management with Linux
 I bought a Virtual Private Server running **Debian Linux** to host my web (nginx), mail (Postfix, Dovecot,
 OpenDKIM, SpamAssassin) and Git servers.
@@ -51,19 +44,26 @@ I created a simple RSS reader application with **React Native**. Its initial ver
 React Native course I took in my university, but I decided to keep working on it to add new features like
 adding feeds from QR codes. You can view the source [here][rss-reader-app].
 
-2019
+2019 - Present
 {: .resume-side}
-### Simple web application with HTML, CSS and vanilla JavaScript
-I created a simple web application with a couple of my friends using vanilla JavaScript as a means of learning
-the language. It is a website for browsing Finnish Ticketmaster events, aptly named **Ticketmapster**.
-See the source [here][ticketmapster].
+### Creating a chat bot with Python
+I developed an automated bot for Discord, a popular instant messaging service. **Python**’s asynchronous
+capabilities and the discord.py API were utilized to interface with the chat platform. You can view the
+source [here][zedrogames-bot].
 
 2018 - Present
 {: .resume-side}
 ### Programming games with Ruby
-I have contributed to **Pokémon Essentials**, the open-source video game framework that seeks to emulate the
-2D Pokémon games. Running on legacy Ruby code, I've helped refactor its massive, old codebase to meet modern standards.
+I have contributed to Pokémon Essentials, an open-source video game framework that seeks to emulate the
+2D Pokémon games. Running on legacy **Ruby** code, I've helped refactor its massive, old codebase to meet modern standards.
 See the refactor branch of my fork [here][essentials-refactor].
+
+2019
+{: .resume-side}
+### Simple web application with HTML, CSS and vanilla JavaScript
+I created a simple web application with a couple of my friends using vanilla **JavaScript** as a means of learning
+the language. It is a website for browsing Finnish Ticketmaster events, aptly named **Ticketmapster**.
+See the source [here][ticketmapster].
 
 
 [zedrogames-bot]: https://github.com/jonisavo/zedrogames-bot
