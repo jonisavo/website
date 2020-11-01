@@ -44,6 +44,13 @@ I bought a Virtual Private Server running **Debian Linux** to host my web (nginx
 OpenDKIM, SpamAssassin) and Git servers.
 
 ## Programming
+2020 - Present
+{: .resume-side}
+### Mobile application development with React Native
+I created a simple RSS reader application with **React Native**. Its initial version was made in 3 days for a
+React Native course I took in my university, but I decided to keep working on it to add new features like
+adding feeds from QR codes. You can view the source [here][rss-reader-app].
+
 2019
 {: .resume-side}
 ### Simple web application with HTML, CSS and vanilla JavaScript
@@ -60,5 +67,6 @@ See the refactor branch of my fork [here][essentials-refactor].
 
 
 [zedrogames-bot]: https://github.com/jonisavo/zedrogames-bot
+[rss-reader-app]: https://github.com/jonisavo/simple-rss-reader
 [ticketmapster]: https://github.com/jonisavo/ticketmapster
 [essentials-refactor]: https://github.com/jonisavo/pokemon-essentials/tree/refactor
