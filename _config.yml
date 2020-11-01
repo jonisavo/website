@@ -18,6 +18,7 @@ exclude:
   - LICENSE
   - README.md
   - Gemfile*
+  - publi.sh
 
 # Syntax highlighting
 highlightstyle: 'agate'
