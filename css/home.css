@@ -1,0 +1,37 @@
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 85%;
+}
+
+.face-container {
+  max-width: 45%;
+  font-family: monospace, fixed;
+  font-weight: bold;
+  font-size: 8px;
+  font-size: 0.75vw;
+}
+
+.home-container main {
+  width: 55%;
+}
+
+.home-container p, .home-container li {
+  font-size: x-large;
+}
+
+@media only screen and (max-width: 800px) {
+  .face-container {
+    max-width: 100%;
+    font-size: 1.4vw;
+  }
+
+  .home-container {
+    justify-content: center;
+  }
+
+  .home-container main {
+    width: 100%;
+  }
+}

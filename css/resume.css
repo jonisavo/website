@@ -1,0 +1,33 @@
+section {
+  position: relative;
+  background-color: #00a;
+  padding: 1em 1em 1em 1em;
+  margin-bottom: 2em;
+}
+
+section h2 {
+  width: 55%;
+}
+
+section h3 {
+  width: 35%;
+  position: absolute;
+  text-align: end;
+  right: 1em;
+  top: 1em;
+}
+
+main {
+  margin-bottom: 3vh;
+}
+
+li {
+  font-size: large;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1300px) {
+  .site-container {
+    width: 50%;
+  }
+}

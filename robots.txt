@@ -1,8 +1,4 @@
----
-layout: null
-sitemap: false
----
 User-agent: *
 Disallow:
 
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: https://savolainen.io/sitemap.xml
