@@ -61,6 +61,7 @@ li:hover {
   font-family: monospace, fixed;
   white-space: pre;
   text-rendering: optimizeLegibility;
+  font-weight: bold;
 }
 
 .ascii-line-black-blue {
@@ -77,5 +78,13 @@ li:hover {
   .monospace-header {
     font-size: 1.5vw;
   }
+}
+
+figure.ascii-figure {
+  margin: 0;
+}
+
+figure.ascii-figure figcaption {
+  display: none;
 }
 
