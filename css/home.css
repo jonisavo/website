@@ -29,6 +29,7 @@
 
   .home-container {
     justify-content: center;
+    margin-bottom: 7vh;
   }
 
   .home-container main {
