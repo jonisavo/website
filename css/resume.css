@@ -17,6 +17,10 @@ section h3 {
   top: 1em;
 }
 
+section p {
+  font-size: large;
+}
+
 main {
   margin-bottom: 3vh;
 }
