@@ -21,14 +21,14 @@ a:hover {
 }
 
 ul {
-  background-color: #00a;
+  background-color: #008;
   padding: 1em 1em 1em 1em;
 }
 
 li {
   list-style: none;
   color: #fff;
-  background-color: #00a;
+  background-color: #008;
   margin: 0.15em 0;
   box-sizing: border-box;
 }
