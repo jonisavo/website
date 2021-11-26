@@ -30,6 +30,10 @@ section h3 {
   top: 0.75em;
 }
 
+section p {
+  font-size: large;
+}
+
 main {
   margin-bottom: 3vh;
 }
@@ -37,6 +41,10 @@ main {
 li {
   font-size: large;
   text-align: center;
+}
+
+.monospace-header {
+  font-size: 1vw;
 }
 
 @media only screen and (min-width: 1300px) {
