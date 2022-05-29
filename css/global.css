@@ -48,11 +48,13 @@ li:hover {
 }
 
 .site-container footer {
-  position: absolute;
+  position: sticky;
+  bottom: 0;
+  background-color: #000;
+  padding-bottom: 1vh;
   left: 0;
   width: 100%;
   text-align: center;
-  bottom: 1vh;
   font-size: large;
 }
 
