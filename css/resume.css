@@ -10,9 +10,14 @@ section .header {
   color: #000;
 }
 
+section .header h2:not(:first-child) {
+  padding-top: 0;
+}
+
 section .content {
-  padding: 1em;
-  font-size: larger;
+  padding: 0.6em;
+  line-height: 1em;
+  font-size: x-large;
 }
 
 section h2 {
@@ -31,6 +36,10 @@ section h2 span {
   top: 0.75em;
 }
 
+section h2:not(:first-child) span {
+  top: 0.25em;
+}
+
 @media only screen and (max-width: 700px) {
   section h2 {
     display: flex;
@@ -42,14 +51,14 @@ section h2 span {
     position: relative;
     right: unset;
     text-align: unset;
-    top: unset;
+    top: unset !important;
   }
 }
 
 section h3 {
   margin: 0;
   font-size: larger;
-  padding: 0.5em 1em 0;
+  padding: 0.9em 0.8em 0;
   background-color: #000;
   color: #ddd;
 }
