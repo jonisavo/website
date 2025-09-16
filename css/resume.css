@@ -7,7 +7,7 @@ section {
 section .header {
   position: relative;
   background-color: #ddd;
-  color: #000;
+  color: var(--color-bg);
 }
 
 section .header h2:not(:first-child) {
@@ -59,7 +59,7 @@ section h3 {
   margin: 0;
   font-size: larger;
   padding: 0.9em 0.8em 0;
-  background-color: #000;
+  background-color: var(--color-bg);
   color: #ddd;
 }
 

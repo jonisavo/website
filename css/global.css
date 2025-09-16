@@ -1,17 +1,284 @@
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('../fonts/IntelOneMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('../fonts/IntelOneMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-display: swap;
+}
+
+body,
+ul,
+.site-container footer,
+[class*="ascii-"],
+section .header,
+section h3 {
+  transition: color 2.5s, background-color 3s, border-color 3s;
+}
+
+a:hover, li:hover, li:hover a {
+  transition: color 0.35s, background-color 0.35s;
+}
+
+html {
+  font-family: "Intel One Mono", monospace;
+
+  --color-bg: black;
+  
+  --color-red: #a00;
+  --color-green: #0a0;
+  --color-blue: #00a;
+  
+  --color-purple: #a0a;
+  --color-pink: #f5f;
+  
+  --color-orange: #a50;
+  
+  --color-cyan: #0aa;
+  
+  --color-white: #eee;
+  --color-lightgray: #aaa;
+  --color-gray: #555;
+}
+
+/* Vaporwave palette */
+html.palette-vaporwave {
+  --color-bg: #001;
+  --color-red: #ff3d3d;
+  --color-green: #42f557;
+  --color-blue: #0062ff;
+  --color-purple: #8b3cff;
+  --color-pink: #ff71ce;
+  --color-orange: #ff9f4f;
+  --color-cyan: #01cdfe;
+  --color-white: #fff;
+  --color-lightgray: #b0b0b0;
+  --color-gray: #606060;
+}
+
+/* 80s palette */
+html.palette-80s {
+  --color-bg: #2d0a3d;
+  --color-red: #ff004d;
+  --color-green: #24e0a4;
+  --color-blue: #008cff;
+  --color-purple: #a443f5;
+  --color-pink: #ff00a9;
+  --color-orange: #ff7f00;
+  --color-cyan: #00c7d4;
+  --color-white: #ffffff;
+  --color-lightgray: #c9c9c9;
+  --color-gray: #7a7a7a;
+}
+
+/* Cyberdark palette */
+html.palette-cyberdark {
+  --color-bg: #0d0d0d;
+  --color-red: #ff003c;
+  --color-green: #00ff41;
+  --color-blue: #0077ff;
+  --color-purple: #6a00ff;
+  --color-pink: #ff00a1;
+  --color-orange: #ff5700;
+  --color-cyan: #00e5ff;
+  --color-white: #e5e5e5;
+  --color-lightgray: #a8a8a8;
+  --color-gray: #4d4d4d;
+}
+
+/* Solarized Dark palette */
+html.palette-solarized-dark {
+  --color-bg: #002b36;
+  --color-red: #dc322f;
+  --color-green: #859900;
+  --color-blue: #268bd2;
+  --color-purple: #6c71c4;
+  --color-pink: #d33682;
+  --color-orange: #cb4b16;
+  --color-cyan: #2aa198;
+  --color-white: #eee8d5;
+  --color-lightgray: #93a1a1;
+  --color-gray: #586e75;
+}
+
+/* Monokai palette */
+html.palette-monokai {
+  --color-bg: #272822;
+  --color-red: #f92672;
+  --color-green: #a6e22e;
+  --color-blue: #66d9ef;
+  --color-purple: #ae81ff;
+  --color-pink: #f92672;
+  --color-orange: #fd971f;
+  --color-cyan: #a1efe4;
+  --color-white: #f8f8f2;
+  --color-lightgray: #75715e;
+  --color-gray: #49483e;
+}
+
+/* Dracula palette */
+html.palette-dracula {
+  --color-bg: #282a36;
+  --color-red: #ff5555;
+  --color-green: #50fa7b;
+  --color-blue: #8be9fd;
+  --color-purple: #bd93f9;
+  --color-pink: #ff79c6;
+  --color-orange: #ffb86c;
+  --color-cyan: #8be9fd;
+  --color-white: #f8f8f2;
+  --color-lightgray: #6272a4;
+  --color-gray: #44475a;
+}
+
+/* NES palette */
+html.palette-nes {
+  --color-bg: #343434;
+  --color-red: #ff4747;
+  --color-green: #52a047;
+  --color-blue: #5959ff;
+  --color-purple: #b255ff;
+  --color-pink: #ff6bfd;
+  --color-orange: #e7943a;
+  --color-cyan: #6be7e7;
+  --color-white: #ffffff;
+  --color-lightgray: #ababab;
+  --color-gray: #787878;
+}
+
+/* Nord palette */
+html.palette-nord {
+  --color-bg: #2e3440;
+  --color-red: #bf616a;
+  --color-green: #a3be8c;
+  --color-blue: #81a1c1;
+  --color-purple: #b48ead;
+  --color-pink: #d08770; /* warm accent */
+  --color-orange: #d08770;
+  --color-cyan: #88c0d0;
+  --color-white: #e5e9f0;
+  --color-lightgray: #d8dee9;
+  --color-gray: #4c566a;
+}
+
+/* Gruvbox Dark palette */
+html.palette-gruvbox-dark {
+  --color-bg: #282828;
+  --color-red: #fb4934;
+  --color-green: #b8bb26;
+  --color-blue: #83a598;
+  --color-purple: #d3869b;
+  --color-pink: #fe8019; /* warm accent reads as pink/orange */
+  --color-orange: #fe8019;
+  --color-cyan: #8ec07c;
+  --color-white: #ebdbb2;
+  --color-lightgray: #a89984;
+  --color-gray: #504945;
+}
+
+/* One Dark palette */
+html.palette-one-dark {
+  --color-bg: #282c34;
+  --color-red: #e06c75;
+  --color-green: #98c379;
+  --color-blue: #61afef;
+  --color-purple: #c678dd;
+  --color-pink: #ff6ac1;
+  --color-orange: #d19a66;
+  --color-cyan: #56b6c2;
+  --color-white: #e6effa;
+  --color-lightgray: #abb2bf;
+  --color-gray: #3e4451;
+}
+
+/* Retro Terminal palette (green-on-black, hacker vibes) */
+html.palette-retro-terminal {
+  --color-bg: #000000;
+  --color-red: #ff4d4d;
+  --color-green: #33ff66;
+  --color-blue: #66b2ff;
+  --color-purple: #b266ff;
+  --color-pink: #ff66cc;
+  --color-orange: #ffa64d;
+  --color-cyan: #33ffff;
+  --color-white: #e6e6e6;
+  --color-lightgray: #a6a6a6;
+  --color-gray: #404040;
+}
+
+/* Game Boy DMG palette (monochrome-inspired with readable accents) */
+html.palette-gameboy {
+  --color-bg: #0f380f;      /* dark pea green */
+  --color-red: #ff6b6b;
+  --color-green: #8bac0f;   /* classic mid green */
+  --color-blue: #7aa2ff;
+  --color-purple: #b48ead;
+  --color-pink: #ff92d0;
+  --color-orange: #ffb86c;
+  --color-cyan: #8be9fd;
+  --color-white: #e8f5d0;   /* warm light to match GB vibe */
+  --color-lightgray: #9bbc0f;
+  --color-gray: #306230;
+}
+
+/* C64 (Commodore 64-inspired) palette */
+html.palette-c64 {
+  --color-bg: #352879;      /* deep C64 purple */
+  --color-red: #883932;
+  --color-green: #55a049;
+  --color-blue: #6c5eb5;
+  --color-purple: #8b3f96;
+  --color-pink: #ff7ab2;
+  --color-orange: #b86918;
+  --color-cyan: #5cab7d;
+  --color-white: #e0d7ff;
+  --color-lightgray: #8a80c6;
+  --color-gray: #51478e;
+}
+
+/* TRON / Neon Grid palette */
+html.palette-tron {
+  --color-bg: #0a0f1e;
+  --color-red: #ff4d6d;
+  --color-green: #46ffaf;
+  --color-blue: #4cc9f0;
+  --color-purple: #9d4edd;
+  --color-pink: #f72585;
+  --color-orange: #ff9e00;
+  --color-cyan: #22d3ee;
+  --color-white: #eaf4ff;
+  --color-lightgray: #9fb6c7;
+  --color-gray: #2a3550;
+}
+
+/* DOOM palette */
+html.palette-doom {
+  --color-bg: #1a0f0f;
+  --color-red: #ff3b30;
+  --color-green: #9fd356;
+  --color-blue: #5aa9e6;
+  --color-purple: #b76bf3;
+  --color-pink: #ff6b9a;
+  --color-orange: #ff8f1f;
+  --color-cyan: #54d1db;
+  --color-white: #f1e9e6;
+  --color-lightgray: #a89e9b;
+  --color-gray: #3b2a2a;
+}
+
 body {
   position: relative;
   min-height: 100vh;
-  background-color: black;
-  color: white;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-h1, h2 {
-  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-white);
 }
 
 a {
-  color: #f9f;
+  color: var(--color-pink);
   text-decoration: none;
 }
 
@@ -20,26 +287,30 @@ p {
 }
 
 a:hover {
-  background-color: #faf;
-  color: #000;
+  background-color: var(--color-purple);
+  color: var(--color-white);
 }
 
 ul {
   background-color: transparent;
   padding: 1em 1em 1em 1em;
-  border: #fff solid;
+  border: 1px solid var(--color-white);
 }
 
 li {
   list-style: none;
-  color: #fff;
+  color: var(--color-white);
   background-color: transparent;
   margin: 0.25em 0;
   box-sizing: border-box;
 }
 
 li:hover {
-  background-color: #a0a;
+  background-color: var(--color-purple);
+}
+
+li:hover a {
+  color: var(--color-white);
 }
 
 .site-container {
@@ -51,15 +322,24 @@ li:hover {
   margin: auto;
 }
 
+.site-container header {
+  margin-bottom: 4vh;
+  width: 100%;
+}
+
 .site-container footer {
   position: sticky;
   bottom: 0;
-  background-color: #000;
+  background-color: var(--color-bg);
   padding-bottom: 1vh;
   left: 0;
   width: 100%;
   text-align: center;
   font-size: large;
+}
+
+footer a {
+  padding: 4px;
 }
 
 .monospace-header {
@@ -72,13 +352,153 @@ li:hover {
 }
 
 .ascii-line-black-blue {
-  color: #00a;
-  background-color: #000;
+  color: var(--color-blue);
+  background-color: var(--color-bg);
 }
 
 .ascii-line-black-pink {
-  color: #f5f;
-  background-color: #000;
+  color: var(--color-pink);
+  background-color: var(--color-bg);
+}
+
+.ascii-red {
+  color: var(--color-red);
+  background-color: var(--color-bg);
+}
+
+.ascii-red-gray {
+  color: var(--color-red);
+  background-color: var(--color-gray);
+}
+
+.ascii-black-red {
+  color: var(--color-bg);
+  background-color: var(--color-red);
+}
+
+.ascii-red-orange {
+  color: var(--color-red);
+  background-color: var(--color-orange);
+}
+
+.ascii-black-gray {
+  color: var(--color-bg);
+  background-color: var(--color-gray);
+}
+
+.ascii-gray-purple {
+  color: var(--color-gray);
+  background-color: var(--color-purple);
+}
+
+.ascii-gray {
+  color: var(--color-gray);
+  background-color: var(--color-bg);
+}
+
+.ascii-gray-lightgray {
+  color: var(--color-gray);
+  background-color: var(--color-lightgray);
+}
+
+.ascii-pink-purple {
+  color: var(--color-pink);
+  background-color: var(--color-purple);
+}
+
+.ascii-purple-pink {
+  color: var(--color-purple);
+  background-color: var(--color-pink);
+}
+
+.ascii-purple-red {
+  color: var(--color-purple);
+  background-color: var(--color-red);
+}
+
+.ascii-purple-blue {
+  color: var(--color-purple);
+  background-color: var(--color-blue);
+}
+
+.ascii-blue-purple {
+  color: var(--color-blue);
+  background-color: var(--color-purple);
+}
+
+.ascii-black-blue {
+  color: var(--color-bg);
+  background-color: var(--color-blue);
+}
+
+.ascii-blue-gray {
+  color: var(--color-blue);
+  background-color: var(--color-gray);
+}
+
+.ascii-green {
+  color: var(--color-green);
+  background-color: var(--color-bg);
+}
+
+.ascii-black-green {
+  color: var(--color-bg);
+  background-color: var(--color-green);
+}
+
+.ascii-green-gray {
+  color: var(--color-green);
+  background-color: var(--color-gray);
+}
+
+.ascii-green-orange {
+  color: var(--color-green);
+  background-color: var(--color-orange);
+}
+
+.ascii-orange-green {
+  color: var(--color-orange);
+  background-color: var(--color-green);
+}
+
+.ascii-purple-gray {
+  color: var(--color-purple);
+  background-color: var(--color-gray);
+}
+
+.ascii-cyan-gray {
+  color: var(--color-cyan);
+  background-color: var(--color-gray);
+}
+
+.ascii-orange-gray {
+  color: var(--color-orange);
+  background-color: var(--color-gray);
+}
+
+.ascii-gray-orange {
+  color: var(--color-gray);
+  background-color: var(--color-orange);
+}
+
+.ascii-orange-red {
+  color: var(--color-orange);
+  background-color: var(--color-red);
+}
+
+.ascii-red-purple {
+  color: var(--color-red);
+  background-color: var(--color-purple);
+}
+
+.ascii-lightgray-gray {
+  color: var(--color-lightgray);
+  background-color: var(--color-gray);
+}
+
+.ascii-white-lightgray {
+  color: var(--color-white);
+  background-color: var(--color-lightgray);
 }
 
 @media only screen and (max-width: 800px) {
@@ -95,3 +515,52 @@ figure.ascii-figure figcaption {
   display: none;
 }
 
+.theme-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.theme-controls {
+  display: flex;
+  gap: 16px;
+  justify-content: space-evenly;
+}
+
+.theme-label-text {
+  font-size: medium;
+  color: var(--color-lightgray);
+}
+
+.btn-text,
+button.btn-text {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color-pink);
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: color 0.35s, background-color 0.35s;
+}
+
+.btn-text:hover,
+.btn-text:active {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.btn-text:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 2px;
+}
+
+.btn-text:disabled,
+.btn-text[aria-disabled="true"] {
+  color: var(--color-lightgray);
+  cursor: not-allowed;
+  background: none;
+}
