@@ -23,6 +23,7 @@
   <body class="site-container">
     <header>
       <h2>Joni Savolainen</h2>
+      <a href="mailto:joni@savolainen.io">joni@savolainen.io</a>
     </header>
     <div class="home-container">
       <div class="face-container">
@@ -67,14 +68,13 @@
         <p>
           Virtually unstoppable with coffee.
         </p>
-        <ul>
-          <li><a href="./resume">> My resume</a></li>
-          <li><a href="https://jonisavo.itch.io/">> My itch.io page</a></li>
-          <li><a href="https://github.com/jonisavo">> My GitHub page</a></li>
-          <li><a href="https://www.linkedin.com/in/jonisavo/">> My LinkedIn page</a></li>
+        <ul class="link-list">
+          <li><a href="https://www.linkedin.com/in/jonisavo/">> My LinkedIn page (the Man)</a></li>
+          <li><a href="https://github.com/jonisavo">> My GitHub page (the fun)</a></li>
+          <li><a href="https://jonisavo.itch.io/">> My itch.io page (the games)</a></li>
         </ul>
         <div class="theme-container">
-          <span class="theme-label-text"><span id="theme-label">default</span></span>
+          <span class="theme-label-text">Theme: <span id="theme-label">default</span></span>
           <div class="theme-controls">
             <button class="btn-text" id="prev-theme-button">Prev</button>
             <button class="btn-text" id="next-theme-button">Next</button>
@@ -82,10 +82,76 @@
           </div>
         </div>
       </main>
-      <footer>
-        <a href="mailto:joni@savolainen.io">joni@savolainen.io</a>
-      </footer>
     </div>
+    <h3>Work & Projects</h3>
+    <section>
+      <div class="section-header">
+        <h2><span>"The motions"</span><span>Software Engineer</span></h2>
+      </div>
+      <div class="section-content">
+        <div>
+          <p>
+            I work as a Software Engineer in Helvar.
+            I am known within the company for putting out fires and getting things done.
+            My greatest accomplishments include:
+          </p>
+          <ul>
+            <li>
+              Modernizing the architecture of the ActiveAhead Generation 2 mobile application,
+              which led to orders of magnitude higher performance
+            </li>
+            <li>
+              Salvaging a software project that had been stuck for years in three months
+            </li>
+            <li>
+              Advocating for new and improved ways of working,
+            </li>
+          </ul>
+          <p>
+            <a href="https://helvar.com">Helvar's website</a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-header">
+        <h2><span>UIComponents</span><span>Unity library</span></h2>
+      </div>
+      <div class="section-content">
+        <div>
+          <p>
+            A frontend framework for the Unity game engine's new UIToolkit subsystem.
+            It's a collection of source generators, runtime components and Roslyn analyzers.
+          </p>
+          <p>
+            <a href="https://github.com/jonisavo/uicomponents">View on GitHub</a>
+          </p>
+        </div>
+        <img src="https://raw.githubusercontent.com/jonisavo/uicomponents/main/logo.png" alt="UIComponents logo" width="200" height="200" />
+      </div>
+    </section>
+    <section>
+      <div class="section-header">
+        <h2><span>Lucy's Dream</span><span>Game</span></h2>
+      </div>
+      <div class="section-content">
+        <div>
+          <p>A victorian-style puzzle horror adventure across two interlinked dimensions.</p>
+          <p>
+            I was the "code lead," and responsible for the implementation plans of many of the game's systems.
+            I led five coders on the project.
+          </p>
+          <p>
+            The game received great feedback from players, and we managed to reach third place in the
+            <a href="https://www.bit1.fi/">Bit1 student game awards</a>.
+          </p>
+          <p>
+            <a href="https://jonisavo.itch.io/lucys-dream">View on itch.io</a>
+          </p>
+        </div>
+        <img src="https://img.itch.zone/aW1hZ2UvMTMwNTQ4Ny85NjY1NDc0LnBuZw==/347x500/5jH3%2FY.png" alt="Screenshot from Lucy's Dream" width="347" height="195" />
+      </div>
+    </section>
   </body>
 
   <script lang="javascript" type="text/javascript">
@@ -148,7 +214,7 @@
       if (disableAutoMode) {
         clearInterval(autoModeIntervalId);
       } else {
-        autoModeIntervalId = setInterval(switchToNextTheme, 8000);
+        autoModeIntervalId = setInterval(switchToNextTheme, 15000);
       }
     }
     document.getElementById('auto-theme-button').addEventListener('click', switchToAutoTheme);

@@ -12,10 +12,11 @@
 }
 
 body,
-ul,
+ul.link-list,
+.site-container header,
 .site-container footer,
 [class*="ascii-"],
-section .header,
+section .section-header,
 section h3 {
   transition: color 2.5s, background-color 3s, border-color 3s;
 }
@@ -291,13 +292,13 @@ a:hover {
   color: var(--color-white);
 }
 
-ul {
+ul.link-list {
   background-color: transparent;
   padding: 1em 1em 1em 1em;
   border: 1px solid var(--color-white);
 }
 
-li {
+ul.link-list li {
   list-style: none;
   color: var(--color-white);
   background-color: transparent;
@@ -305,11 +306,11 @@ li {
   box-sizing: border-box;
 }
 
-li:hover {
+ul.link-list li:hover {
   background-color: var(--color-purple);
 }
 
-li:hover a {
+ul.link-list li:hover a {
   color: var(--color-white);
 }
 
@@ -323,8 +324,17 @@ li:hover a {
 }
 
 .site-container header {
+  position: sticky;
+  background-color: var(--color-bg);
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 4vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
   width: 100%;
+  z-index: 1;
 }
 
 .site-container footer {
@@ -563,4 +573,91 @@ button.btn-text {
   color: var(--color-lightgray);
   cursor: not-allowed;
   background: none;
+}
+
+section {
+  position: relative;
+  border: var(--color-lightgray) solid;
+  margin-bottom: 2em;
+  min-width: 60%;
+  max-width: 55vw;
+}
+
+section .section-header {
+  position: relative;
+  background-color: var(--color-lightgray);
+  color: var(--color-bg);
+}
+
+section .section-header h2:not(:first-child) {
+  padding-top: 0;
+}
+
+section .section-content {
+  padding: 0.6em;
+  margin-left: 0.6em;
+  display: flex;
+  gap: 16px;
+}
+
+section .section-content img {
+  border: 2px solid var(--color-lightgray);
+}
+
+section h2 {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  font-size: large;
+  position: relative;
+}
+
+section h2:not(:first-child) span {
+  top: 0.25em;
+}
+
+@media only screen and (max-width: 700px) {
+  main {
+    margin-top: 32px;
+  }
+
+  section h2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section h2 span {
+    width: 100%;
+    position: relative;
+    right: unset;
+    text-align: unset;
+    top: unset !important;
+  }
+
+  .site-container header {
+    flex-direction: column;
+    padding-bottom: 1em;
+  }
+
+  .site-container header h2 {
+    margin-bottom: 0.5em;
+  }
+}
+
+section h3 {
+  margin: 0;
+  font-size: larger;
+  padding: 0.9em 0.8em 0;
+  background-color: var(--color-bg);
+  color: var(--color-lightgray);
+}
+
+section h3.bottom-label {
+  top: unset;
+  bottom: 0.75em;
+}
+
+section p {
+  font-size: large;
 }

@@ -30,10 +30,18 @@
 
   .home-container {
     justify-content: center;
-    margin-bottom: 7vh;
   }
 
   .home-container main {
     width: 100%;
+  }
+
+  div.section-content {
+    flex-direction: column;
+  }
+
+  div.section-content img {
+    max-width: 95%;
+    align-self: center;
   }
 }
