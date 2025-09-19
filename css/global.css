@@ -211,21 +211,6 @@ html.palette-retro-terminal {
   --color-gray: #404040;
 }
 
-/* Game Boy DMG palette (monochrome-inspired with readable accents) */
-html.palette-gameboy {
-  --color-bg: #0f380f;      /* dark pea green */
-  --color-red: #ff6b6b;
-  --color-green: #8bac0f;   /* classic mid green */
-  --color-blue: #7aa2ff;
-  --color-purple: #b48ead;
-  --color-pink: #ff92d0;
-  --color-orange: #ffb86c;
-  --color-cyan: #8be9fd;
-  --color-white: #e8f5d0;   /* warm light to match GB vibe */
-  --color-lightgray: #9bbc0f;
-  --color-gray: #306230;
-}
-
 /* C64 (Commodore 64-inspired) palette */
 html.palette-c64 {
   --color-bg: #352879;      /* deep C64 purple */
