@@ -14,7 +14,6 @@
 body,
 ul.link-list,
 .site-container header,
-.site-container footer,
 [class*="ascii-"],
 section .section-header,
 section h3 {
@@ -259,8 +258,26 @@ html.palette-doom {
 body {
   position: relative;
   min-height: 100vh;
+  margin: 0;
   background-color: var(--color-bg);
   color: var(--color-white);
+}
+
+/* Animated background canvas */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* behind content, above body background */
+}
+
+
+/* Lift content above the canvas without overriding sticky header */
+.site-container > :not(header) {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -299,12 +316,12 @@ ul.link-list li:hover a {
   color: var(--color-white);
 }
 
-.site-container {
+.content-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
   justify-content: center;
   align-items: center;
+  width: 80%;
   margin: auto;
 }
 
@@ -313,28 +330,11 @@ ul.link-list li:hover a {
   background-color: var(--color-bg);
   top: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 4vh;
-  margin-left: 1vw;
-  margin-right: 1vw;
   width: 100%;
-  z-index: 1;
-}
-
-.site-container footer {
-  position: sticky;
-  bottom: 0;
-  background-color: var(--color-bg);
-  padding-bottom: 1vh;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: large;
-}
-
-footer a {
-  padding: 4px;
+  z-index: 2;
 }
 
 .monospace-header {
@@ -348,17 +348,14 @@ footer a {
 
 .ascii-line-black-blue {
   color: var(--color-blue);
-  background-color: var(--color-bg);
 }
 
 .ascii-line-black-pink {
   color: var(--color-pink);
-  background-color: var(--color-bg);
 }
 
 .ascii-red {
   color: var(--color-red);
-  background-color: var(--color-bg);
 }
 
 .ascii-red-gray {
@@ -388,7 +385,6 @@ footer a {
 
 .ascii-gray {
   color: var(--color-gray);
-  background-color: var(--color-bg);
 }
 
 .ascii-gray-lightgray {
@@ -433,7 +429,6 @@ footer a {
 
 .ascii-green {
   color: var(--color-green);
-  background-color: var(--color-bg);
 }
 
 .ascii-black-green {
@@ -625,7 +620,7 @@ section h2:not(:first-child) span {
     top: unset !important;
   }
 
-  .site-container {
+  .content-container {
     width: 90%;
   }
 

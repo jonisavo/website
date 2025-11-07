@@ -21,166 +21,169 @@
   </head>
 
   <body class="site-container">
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <header>
       <h2>Joni Savolainen</h2>
       <a href="mailto:joni@savolainen.io">joni@savolainen.io</a>
     </header>
-    <div class="home-container">
-      <div class="face-container">
-        <figure role="img" aria-labelledby="face-caption" class="ascii-figure">
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-purple-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-pink-purple">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">tX</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">@</span><span class="ascii-black-blue">8</span><span class="ascii-pink-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">8</span><span class="ascii-purple-pink">;</span><span class="ascii-pink-purple">X</span><span class="ascii-line-black-blue">S</span><span class="ascii-red-purple">8</span><span class="ascii-pink-purple">S</span><span class="ascii-line-black-blue">X</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-red-purple">8</span><span class="ascii-blue-purple">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-black-blue">@</span><span class="ascii-purple-red">8</span><span class="ascii-black-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">@</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">.&#160;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">@</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">88S%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-pink-purple">St</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">@</span><span class="ascii-blue-purple">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">X</span><span class="ascii-red">X</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">t8@X</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">t</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-blue-purple">@</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">X</span><span class="ascii-line-black-blue">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-purple-pink">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">X8</span><span class="ascii-pink-purple">XS</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-black-blue">8</span><span class="ascii-red-purple">t</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">;</span><span class="ascii-red">:&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;.8</span><span class="ascii-pink-purple">S</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">S</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">SS;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-purple-pink">8</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-purple-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;:</span><span class="ascii-purple-red">8</span><span class="ascii-purple-pink">t@</span><span class="ascii-pink-purple">t</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-black-blue">8</span><span class="ascii-purple-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-red-purple">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">X;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;</span><span class="ascii-red">;X</span><span class="ascii-black-blue">8</span><span class="ascii-red-purple">%</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@</span><span class="ascii-purple-pink">:%</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">X</span><span class="ascii-purple-pink">t</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">%</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.:</span><span class="ascii-red">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">%</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-pink-purple">t</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">S</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">X</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-purple-red">8</span><span class="ascii-line-black-blue">:</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">%8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">@</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">:&#160;&#160;..&#160;S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">S;;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">.:&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.X</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">@</span><span class="ascii-blue-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-pink-purple">;</span><span class="ascii-red">@</span><span class="ascii-green">&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">.&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">...</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;.:</span><span class="ascii-red">@</span><span class="ascii-pink-purple">S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">&#160;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;.</span><span class="ascii-line-black-blue">;</span><span class="ascii-red">t</span><span class="ascii-green">%</span><span class="ascii-red">t</span><span class="ascii-green">;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;t</span><span class="ascii-purple-gray">;</span><span class="ascii-cyan-gray">t</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">X</span><span class="ascii-red-gray">%</span><span class="ascii-cyan-gray">&#160;&#160;</span><span class="ascii-black-gray">8</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">.::</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;.</span><span class="ascii-black-gray">8</span><span class="ascii-cyan-gray">.</span><span class="ascii-orange-gray">&#160;t</span><span class="ascii-black-gray">8</span><span class="ascii-blue-gray">X</span><span class="ascii-black-gray">X</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-green">t</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;t</span><span class="ascii-lightgray-gray">8</span><span class="ascii-purple-gray">;</span><span class="ascii-green">;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-green">t</span><span class="ascii-blue-gray">S</span><span class="ascii-orange-gray">.</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-black-gray">8</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">...X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">t</span><span class="ascii-line-black-blue">;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray">S</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-green">&#160;&#160;.</span><span class="ascii-red">.</span><span class="ascii-black-gray">8</span><span class="ascii-gray-lightgray">%</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">.</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">:</span><span class="ascii-gray-lightgray">S</span><span class="ascii-black-gray">8</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">.&#160;</span><span class="ascii-green">.t</span><span class="ascii-gray-lightgray">@</span><span class="ascii-black-gray">X</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;.:&#160;</span><span class="ascii-gray">8</span><span class="ascii-gray-lightgray">8</span><span class="ascii-black-gray">X</span><span class="ascii-green">:</span><span class="ascii-line-black-blue">.&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red-gray">%</span><span class="ascii-lightgray-gray">@</span><span class="ascii-gray">@</span><span class="ascii-cyan-gray">%</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">S</span><span class="ascii-red-gray">X</span><span class="ascii-cyan-gray">%</span><span class="ascii-lightgray-gray">@8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;.</span><span class="ascii-line-black-blue">.</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">t</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-lightgray-gray">8</span><span class="ascii-gray">X</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">.</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">;&#160;&#160;&#160;</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-lightgray-gray">8</span><span class="ascii-red">t</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-orange-gray">.</span><span class="ascii-lightgray-gray">X</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">:</span><span class="ascii-green">.</span><span class="ascii-red">&#160;.8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">.</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-cyan-gray">:</span><span class="ascii-red-gray">S</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;;</span><span class="ascii-gray-lightgray">X</span><span class="ascii-gray">X</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-gray-lightgray">8</span><span class="ascii-gray">8</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-purple-gray">t</span><span class="ascii-orange-gray">:</span><span class="ascii-green">..</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;:;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;;</span><span class="ascii-gray-lightgray">8</span><span class="ascii-green">t</span><span class="ascii-line-black-blue">.&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-black-gray">X</span><span class="ascii-lightgray-gray">8</span><span class="ascii-black-gray">8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;.</span><span class="ascii-black-gray">8</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">:</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-black-gray">8</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-orange-gray">&#160;&#160;</span><span class="ascii-line-black-blue">.&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">:</span><span class="ascii-black-gray">X</span><span class="ascii-cyan-gray">.</span><span class="ascii-orange-gray">;</span><span class="ascii-cyan-gray">t</span><span class="ascii-purple-gray">%</span><span class="ascii-green-gray">X</span><span class="ascii-purple-gray">S</span><span class="ascii-cyan-gray">S</span><span class="ascii-orange-gray">.</span><span class="ascii-black-gray">8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">t</span><span class="ascii-gray">8</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray-lightgray">8</span><span class="ascii-lightgray-gray">X</span><span class="ascii-purple-gray">&#160;&#160;%</span><span class="ascii-gray">X8</span><span class="ascii-black-gray">8</span><span class="ascii-orange-gray">.</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-red-gray">%</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;.</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-gray">S</span><span class="ascii-cyan-gray">:</span><span class="ascii-lightgray-gray">S@</span><span class="ascii-gray-lightgray">8</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">&#160;;</span><span class="ascii-purple-gray">t</span><span class="ascii-orange-gray">:</span><span class="ascii-cyan-gray">:</span><span class="ascii-lightgray-gray">8</span><span class="ascii-white-lightgray">;@</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray">X</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-gray">@</span><span class="ascii-orange-gray">t</span><span class="ascii-gray">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">;</span><span class="ascii-green">;</span><span class="ascii-line-black-blue">:</span><span class="ascii-green">.</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;..</span><span class="ascii-black-gray">8</span><span class="ascii-gray-lightgray">8</span><span class="ascii-gray">S</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-green">..</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-cyan-gray">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-red">&#160;.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-lightgray-gray">8</span><span class="ascii-green">:</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;.</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">.</span><span class="ascii-green">;</span><span class="ascii-gray">X8</span><span class="ascii-black-gray">S</span><span class="ascii-orange-gray">;</span><span class="ascii-purple-gray">:</span><span class="ascii-cyan-gray">&#160;:</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-gray">8</span><span class="ascii-cyan-gray">t</span><span class="ascii-red-gray">X</span><span class="ascii-cyan-gray">@</span><span class="ascii-red-gray">8</span><span class="ascii-cyan-gray">@</span><span class="ascii-red-gray">@</span><span class="ascii-cyan-gray">S</span><span class="ascii-black-gray">8</span><span class="ascii-gray">8</span><span class="ascii-line-black-blue">;</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;:</span><span class="ascii-green">8</span><span class="ascii-red">t</span><span class="ascii-green">&#160;</span><span class="ascii-red">;</span><span class="ascii-green">%</span><span class="ascii-red">%</span><span class="ascii-green">.</span><span class="ascii-red">&#160;::</span><span class="ascii-green">;</span><span class="ascii-red">.&#160;.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">t</span><span class="ascii-gray-orange">&#160;&#160;</span><span class="ascii-green-orange">8</span><span class="ascii-black-red">8</span><span class="ascii-green-orange">X</span><span class="ascii-red-orange">8</span><span class="ascii-black-green">8</span><span class="ascii-gray-orange">&#160;</span><span class="ascii-red-orange">S</span><span class="ascii-orange-green">8</span><span class="ascii-orange-red">8</span><span class="ascii-green-orange">@</span><span class="ascii-orange-red">8</span><span class="ascii-orange-green">8</span><span class="ascii-red-orange">@</span><span class="ascii-black-green">8</span><span class="ascii-gray-orange">&#160;&#160;&#160;</span><span class="ascii-green">8</span><span class="ascii-gray-orange">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-        <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">..:</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">;;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
-          <figcaption id="face-caption">ASCII art of my face. Don't worry, you're not missing out on much.</figcaption>
-        </figure>
+    <div class="content-container">
+      <div class="home-container">
+        <div class="face-container">
+          <figure role="img" aria-labelledby="face-caption" class="ascii-figure">
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-purple-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-pink-purple">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">tX</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">@</span><span class="ascii-black-blue">8</span><span class="ascii-pink-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">8</span><span class="ascii-purple-pink">;</span><span class="ascii-pink-purple">X</span><span class="ascii-line-black-blue">S</span><span class="ascii-red-purple">8</span><span class="ascii-pink-purple">S</span><span class="ascii-line-black-blue">X</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-red-purple">8</span><span class="ascii-blue-purple">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-black-blue">@</span><span class="ascii-purple-red">8</span><span class="ascii-black-blue">8</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">@</span><span class="ascii-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">.&#160;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">@</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">88S%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-pink-purple">St</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">S</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-blue-purple">8</span><span class="ascii-black-red">@</span><span class="ascii-blue-purple">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">X</span><span class="ascii-red">X</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">t8@X</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">@</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">t</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-blue-purple">@</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">X</span><span class="ascii-line-black-blue">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-purple-pink">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">X8</span><span class="ascii-pink-purple">XS</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-black-blue">8</span><span class="ascii-red-purple">t</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">;</span><span class="ascii-red">:&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;.8</span><span class="ascii-pink-purple">S</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">S</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">SS;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-purple-pink">8</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">8</span><span class="ascii-purple-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;:</span><span class="ascii-purple-red">8</span><span class="ascii-purple-pink">t@</span><span class="ascii-pink-purple">t</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-black-blue">8</span><span class="ascii-purple-red">@</span><span class="ascii-line-black-blue">8</span><span class="ascii-red-purple">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">8</span><span class="ascii-purple-blue">8</span><span class="ascii-black-red">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">X;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;</span><span class="ascii-red">;X</span><span class="ascii-black-blue">8</span><span class="ascii-red-purple">%</span><span class="ascii-black-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@</span><span class="ascii-purple-pink">:%</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">8</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red-purple">@</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-pink-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;</span><span class="ascii-pink-purple">X</span><span class="ascii-purple-pink">t</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">%</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.:</span><span class="ascii-red">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">%</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">;</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-pink-purple">t</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">S</span><span class="ascii-gray-purple">&#160;&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-purple-red">8</span><span class="ascii-blue-purple">8</span><span class="ascii-red-purple">X</span><span class="ascii-gray-purple">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-purple-red">8</span><span class="ascii-line-black-blue">:</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red-purple">%8</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">@</span><span class="ascii-black-red">8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">:&#160;&#160;..&#160;S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">S;;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">.:&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">.X</span><span class="ascii-pink-purple">%</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">@</span><span class="ascii-blue-purple">8</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-pink-purple">;</span><span class="ascii-red">@</span><span class="ascii-green">&#160;</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">.&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">...</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;.:</span><span class="ascii-red">@</span><span class="ascii-pink-purple">S</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">&#160;</span><span class="ascii-gray-purple">&#160;&#160;&#160;</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;.</span><span class="ascii-line-black-blue">;</span><span class="ascii-red">t</span><span class="ascii-green">%</span><span class="ascii-red">t</span><span class="ascii-green">;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;t</span><span class="ascii-purple-gray">;</span><span class="ascii-cyan-gray">t</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">X</span><span class="ascii-red-gray">%</span><span class="ascii-cyan-gray">&#160;&#160;</span><span class="ascii-black-gray">8</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">.::</span><span class="ascii-red">S</span><span class="ascii-line-black-blue">:</span><span class="ascii-red">X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">.</span><span class="ascii-green">&#160;.</span><span class="ascii-black-gray">8</span><span class="ascii-cyan-gray">.</span><span class="ascii-orange-gray">&#160;t</span><span class="ascii-black-gray">8</span><span class="ascii-blue-gray">X</span><span class="ascii-black-gray">X</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-green">t</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;t</span><span class="ascii-lightgray-gray">8</span><span class="ascii-purple-gray">;</span><span class="ascii-green">;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-green">t</span><span class="ascii-blue-gray">S</span><span class="ascii-orange-gray">.</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-black-gray">8</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">...X</span><span class="ascii-gray-purple">&#160;</span><span class="ascii-red">t</span><span class="ascii-line-black-blue">;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray">S</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-green">&#160;&#160;.</span><span class="ascii-red">.</span><span class="ascii-black-gray">8</span><span class="ascii-gray-lightgray">%</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">.</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">:</span><span class="ascii-gray-lightgray">S</span><span class="ascii-black-gray">8</span><span class="ascii-line-black-blue">&#160;.</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">.&#160;</span><span class="ascii-green">.t</span><span class="ascii-gray-lightgray">@</span><span class="ascii-black-gray">X</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;.:&#160;</span><span class="ascii-gray">8</span><span class="ascii-gray-lightgray">8</span><span class="ascii-black-gray">X</span><span class="ascii-green">:</span><span class="ascii-line-black-blue">.&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red-gray">%</span><span class="ascii-lightgray-gray">@</span><span class="ascii-gray">@</span><span class="ascii-cyan-gray">%</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">S</span><span class="ascii-red-gray">X</span><span class="ascii-cyan-gray">%</span><span class="ascii-lightgray-gray">@8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;.</span><span class="ascii-line-black-blue">.</span><span class="ascii-red-gray">S</span><span class="ascii-cyan-gray">t</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-lightgray-gray">8</span><span class="ascii-gray">X</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">.</span><span class="ascii-red-purple">8</span><span class="ascii-line-black-blue">;&#160;&#160;&#160;</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-lightgray-gray">8</span><span class="ascii-red">t</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-orange-gray">.</span><span class="ascii-lightgray-gray">X</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">:</span><span class="ascii-green">.</span><span class="ascii-red">&#160;.8</span><span class="ascii-line-black-blue">%</span><span class="ascii-red">.</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-cyan-gray">:</span><span class="ascii-red-gray">S</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;;</span><span class="ascii-gray-lightgray">X</span><span class="ascii-gray">X</span><span class="ascii-red">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-gray-lightgray">8</span><span class="ascii-gray">8</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-purple-gray">t</span><span class="ascii-orange-gray">:</span><span class="ascii-green">..</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;:;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;;</span><span class="ascii-gray-lightgray">8</span><span class="ascii-green">t</span><span class="ascii-line-black-blue">.&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-black-gray">X</span><span class="ascii-lightgray-gray">8</span><span class="ascii-black-gray">8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;.</span><span class="ascii-black-gray">8</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">:</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-black-gray">8</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-orange-gray">&#160;&#160;</span><span class="ascii-line-black-blue">.&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">:</span><span class="ascii-black-gray">X</span><span class="ascii-cyan-gray">.</span><span class="ascii-orange-gray">;</span><span class="ascii-cyan-gray">t</span><span class="ascii-purple-gray">%</span><span class="ascii-green-gray">X</span><span class="ascii-purple-gray">S</span><span class="ascii-cyan-gray">S</span><span class="ascii-orange-gray">.</span><span class="ascii-black-gray">8</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">t</span><span class="ascii-gray">8</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray-lightgray">8</span><span class="ascii-lightgray-gray">X</span><span class="ascii-purple-gray">&#160;&#160;%</span><span class="ascii-gray">X8</span><span class="ascii-black-gray">8</span><span class="ascii-orange-gray">.</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-red-gray">%</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;.</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-gray">S</span><span class="ascii-cyan-gray">:</span><span class="ascii-lightgray-gray">S@</span><span class="ascii-gray-lightgray">8</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-lightgray-gray">@</span><span class="ascii-cyan-gray">&#160;;</span><span class="ascii-purple-gray">t</span><span class="ascii-orange-gray">:</span><span class="ascii-cyan-gray">:</span><span class="ascii-lightgray-gray">8</span><span class="ascii-white-lightgray">;@</span><span class="ascii-cyan-gray">&#160;</span><span class="ascii-gray">X</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-gray">@</span><span class="ascii-orange-gray">t</span><span class="ascii-gray">@</span><span class="ascii-line-black-blue">t</span><span class="ascii-red">;</span><span class="ascii-green">;</span><span class="ascii-line-black-blue">:</span><span class="ascii-green">.</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;..</span><span class="ascii-black-gray">8</span><span class="ascii-gray-lightgray">8</span><span class="ascii-gray">S</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-green">..</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-cyan-gray">&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-red">&#160;.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;&#160;&#160;.</span><span class="ascii-purple-gray">&#160;</span><span class="ascii-lightgray-gray">8</span><span class="ascii-green">:</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;.</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">.</span><span class="ascii-green">;</span><span class="ascii-gray">X8</span><span class="ascii-black-gray">S</span><span class="ascii-orange-gray">;</span><span class="ascii-purple-gray">:</span><span class="ascii-cyan-gray">&#160;:</span><span class="ascii-red">:</span><span class="ascii-line-black-blue">.</span><span class="ascii-red">&#160;</span><span class="ascii-green">&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-gray">8</span><span class="ascii-cyan-gray">t</span><span class="ascii-red-gray">X</span><span class="ascii-cyan-gray">@</span><span class="ascii-red-gray">8</span><span class="ascii-cyan-gray">@</span><span class="ascii-red-gray">@</span><span class="ascii-cyan-gray">S</span><span class="ascii-black-gray">8</span><span class="ascii-gray">8</span><span class="ascii-line-black-blue">;</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;:</span><span class="ascii-green">8</span><span class="ascii-red">t</span><span class="ascii-green">&#160;</span><span class="ascii-red">;</span><span class="ascii-green">%</span><span class="ascii-red">%</span><span class="ascii-green">.</span><span class="ascii-red">&#160;::</span><span class="ascii-green">;</span><span class="ascii-red">.&#160;.</span><span class="ascii-green">&#160;&#160;</span><span class="ascii-red">&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">t</span><span class="ascii-gray-orange">&#160;&#160;</span><span class="ascii-green-orange">8</span><span class="ascii-black-red">8</span><span class="ascii-green-orange">X</span><span class="ascii-red-orange">8</span><span class="ascii-black-green">8</span><span class="ascii-gray-orange">&#160;</span><span class="ascii-red-orange">S</span><span class="ascii-orange-green">8</span><span class="ascii-orange-red">8</span><span class="ascii-green-orange">@</span><span class="ascii-orange-red">8</span><span class="ascii-orange-green">8</span><span class="ascii-red-orange">@</span><span class="ascii-black-green">8</span><span class="ascii-gray-orange">&#160;&#160;&#160;</span><span class="ascii-green">8</span><span class="ascii-gray-orange">&#160;&#160;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-red">..:</span><span class="ascii-line-black-blue">&#160;&#160;</span><span class="ascii-green">.</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">.</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-green">&#160;</span><span class="ascii-red">;;</span><span class="ascii-green">&#160;</span><span class="ascii-line-black-blue">&#160;</span><span class="ascii-red">;</span><span class="ascii-line-black-blue">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span><br />
+            <figcaption id="face-caption">ASCII art of my face. Don't worry, you're not missing out on much.</figcaption>
+          </figure>
+        </div>
+        <main>
+          <p>
+            I do a bit of everything.
+          </p>
+          <p>
+            Virtually unstoppable with coffee.
+          </p>
+          <ul class="link-list">
+            <li><a href="https://www.linkedin.com/in/jonisavo/">> My LinkedIn page (the Man)</a></li>
+            <li><a href="https://github.com/jonisavo">> My GitHub page (the fun)</a></li>
+            <li><a href="https://jonisavo.itch.io/">> My itch.io page (the games)</a></li>
+          </ul>
+          <div class="theme-container">
+            <span class="theme-label-text">Theme: <span id="theme-label">default</span></span>
+            <div class="theme-controls">
+              <button class="btn-text" id="prev-theme-button">Prev</button>
+              <button class="btn-text" id="next-theme-button">Next</button>
+              <button class="btn-text" id="auto-theme-button">Auto: off</button>
+            </div>
+          </div>
+        </main>
       </div>
-      <main>
-        <p>
-          I do a bit of everything.
-        </p>
-        <p>
-          Virtually unstoppable with coffee.
-        </p>
-        <ul class="link-list">
-          <li><a href="https://www.linkedin.com/in/jonisavo/">> My LinkedIn page (the Man)</a></li>
-          <li><a href="https://github.com/jonisavo">> My GitHub page (the fun)</a></li>
-          <li><a href="https://jonisavo.itch.io/">> My itch.io page (the games)</a></li>
-        </ul>
-        <div class="theme-container">
-          <span class="theme-label-text">Theme: <span id="theme-label">default</span></span>
-          <div class="theme-controls">
-            <button class="btn-text" id="prev-theme-button">Prev</button>
-            <button class="btn-text" id="next-theme-button">Next</button>
-            <button class="btn-text" id="auto-theme-button">Auto: off</button>
+      <h3>Work & Projects</h3>
+      <section>
+        <div class="section-header">
+          <h2><span>"The motions"</span><span>Software Engineer</span></h2>
+        </div>
+        <div class="section-content">
+          <div>
+            <p>
+              I work as a Software Engineer in Helvar.
+              I am known within the company for putting out fires and getting things done.
+              My greatest accomplishments include:
+            </p>
+            <ul>
+              <li>
+                Modernizing the architecture of the ActiveAhead Generation 2 mobile application,
+                which led to orders of magnitude higher performance
+              </li>
+              <li>
+                Salvaging a software project that had been stuck for years in three months
+              </li>
+              <li>
+                Building infrastructure and tooling for the team: CI pipelines, getting our mobile application
+                to run natively on desktop for fast development, and migrating our multiple mobile applications
+                to a single monorepo which lifted a lot of operational burdens.
+              </li>
+            </ul>
+            <p>
+              <a href="https://helvar.com">Helvar's website</a>
+            </p>
           </div>
         </div>
-      </main>
+      </section>
+      <section>
+        <div class="section-header">
+          <h2><span>UIComponents</span><span>Unity library</span></h2>
+        </div>
+        <div class="section-content">
+          <div>
+            <p>
+              A frontend framework for the Unity game engine's new UIToolkit subsystem.
+              It's a collection of source generators, runtime components, and Roslyn analyzers.
+            </p>
+            <p>
+              <a href="https://github.com/jonisavo/uicomponents">View on GitHub</a>
+            </p>
+          </div>
+          <img src="https://raw.githubusercontent.com/jonisavo/uicomponents/main/logo.png" alt="UIComponents logo" width="200" height="200" />
+        </div>
+      </section>
+      <section>
+        <div class="section-header">
+          <h2><span>Lucy's Dream</span><span>Game</span></h2>
+        </div>
+        <div class="section-content">
+          <div>
+            <p>A victorian-style puzzle horror adventure across two interlinked dimensions.</p>
+            <p>
+              I was the "code lead," and responsible for the implementation plans of many of the game's systems.
+              I led five coders on the project.
+            </p>
+            <p>
+              The game received great feedback from players, and we managed to reach third place in the
+              <a href="https://www.bit1.fi/">Bit1 student game awards</a>.
+            </p>
+            <p>Created with Unity.</p>
+            <p>
+              <a href="https://jonisavo.itch.io/lucys-dream">View on itch.io</a>
+            </p>
+          </div>
+          <img src="https://img.itch.zone/aW1hZ2UvMTMwNTQ4Ny85NjY1NDc0LnBuZw==/347x500/5jH3%2FY.png" alt="Screenshot from Lucy's Dream" width="347" height="195" />
+        </div>
+      </section>
+      <section>
+        <div class="section-header">
+          <h2><span>Demon Uprising</span><span>Game</span></h2>
+        </div>
+        <div class="section-content">
+          <div>
+            <p>
+              A time survival game with top-down shooter gameplay and roguelike mechanics.
+              Built in a team of four for the <a href="https://itch.io/jam/zeno-jam-6">Zeno Jam 6</a> game jam.
+            </p>
+            <p>
+              I'm proud of the various "object pooling" approaches we used to reduce garbage collection and
+              retain decent performance, even with a hundred devices on-screen.
+            </p>
+            <p>
+              Many people have reportedly gotten hooked to the game and spent time playing the browser version
+              "way too long."
+            </p>
+            <p>Created with Unity.</p>
+            <p>
+              <a href="https://messicano.itch.io/demon-uprising">View on itch.io (you can play it in the browser!)</a>
+            </p>
+          </div>
+          <img src="https://img.itch.zone/aW1hZ2UvMTg0OTQzMC8xMDg1NTE3Ny5wbmc=/347x500/lkA9Pw.png" alt="Screenshot from Demon Uprising" width="347" height="195" />
+        </div>
+      </section>
     </div>
-    <h3>Work & Projects</h3>
-    <section>
-      <div class="section-header">
-        <h2><span>"The motions"</span><span>Software Engineer</span></h2>
-      </div>
-      <div class="section-content">
-        <div>
-          <p>
-            I work as a Software Engineer in Helvar.
-            I am known within the company for putting out fires and getting things done.
-            My greatest accomplishments include:
-          </p>
-          <ul>
-            <li>
-              Modernizing the architecture of the ActiveAhead Generation 2 mobile application,
-              which led to orders of magnitude higher performance
-            </li>
-            <li>
-              Salvaging a software project that had been stuck for years in three months
-            </li>
-            <li>
-              Building infrastructure and tooling for the team: CI pipelines, getting our mobile application
-              to run natively on desktop for fast development, and migrating our multiple mobile applications
-              to a single monorepo which lifted a lot of operational burdens.
-            </li>
-          </ul>
-          <p>
-            <a href="https://helvar.com">Helvar's website</a>
-          </p>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="section-header">
-        <h2><span>UIComponents</span><span>Unity library</span></h2>
-      </div>
-      <div class="section-content">
-        <div>
-          <p>
-            A frontend framework for the Unity game engine's new UIToolkit subsystem.
-            It's a collection of source generators, runtime components, and Roslyn analyzers.
-          </p>
-          <p>
-            <a href="https://github.com/jonisavo/uicomponents">View on GitHub</a>
-          </p>
-        </div>
-        <img src="https://raw.githubusercontent.com/jonisavo/uicomponents/main/logo.png" alt="UIComponents logo" width="200" height="200" />
-      </div>
-    </section>
-    <section>
-      <div class="section-header">
-        <h2><span>Lucy's Dream</span><span>Game</span></h2>
-      </div>
-      <div class="section-content">
-        <div>
-          <p>A victorian-style puzzle horror adventure across two interlinked dimensions.</p>
-          <p>
-            I was the "code lead," and responsible for the implementation plans of many of the game's systems.
-            I led five coders on the project.
-          </p>
-          <p>
-            The game received great feedback from players, and we managed to reach third place in the
-            <a href="https://www.bit1.fi/">Bit1 student game awards</a>.
-          </p>
-          <p>Created with Unity.</p>
-          <p>
-            <a href="https://jonisavo.itch.io/lucys-dream">View on itch.io</a>
-          </p>
-        </div>
-        <img src="https://img.itch.zone/aW1hZ2UvMTMwNTQ4Ny85NjY1NDc0LnBuZw==/347x500/5jH3%2FY.png" alt="Screenshot from Lucy's Dream" width="347" height="195" />
-      </div>
-    </section>
-    <section>
-      <div class="section-header">
-        <h2><span>Demon Uprising</span><span>Game</span></h2>
-      </div>
-      <div class="section-content">
-        <div>
-          <p>
-            A time survival game with top-down shooter gameplay and roguelike mechanics.
-            Built in a team of four for the <a href="https://itch.io/jam/zeno-jam-6">Zeno Jam 6</a> game jam.
-          </p>
-          <p>
-            I'm proud of the various "object pooling" approaches we used to reduce garbage collection and
-            retain decent performance, even with a hundred devices on-screen.
-          </p>
-          <p>
-            Many people have reportedly gotten hooked to the game and spent time playing the browser version
-            "way too long."
-          </p>
-          <p>Created with Unity.</p>
-          <p>
-            <a href="https://messicano.itch.io/demon-uprising">View on itch.io (you can play it in the browser!)</a>
-          </p>
-        </div>
-        <img src="https://img.itch.zone/aW1hZ2UvMTg0OTQzMC8xMDg1NTE3Ny5wbmc=/347x500/lkA9Pw.png" alt="Screenshot from Demon Uprising" width="347" height="195" />
-      </div>
-    </section>
   </body>
 
   <script lang="javascript" type="text/javascript">
@@ -248,5 +251,278 @@
     document.getElementById('auto-theme-button').addEventListener('click', switchToAutoTheme);
 
     switchToAutoTheme();
+
+    // Animated background (Canvas 2D)
+    (() => {
+      const canvas = document.getElementById('bg-canvas');
+      if (!canvas || !canvas.getContext) return;
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const state = {
+        w: 0,
+        h: 0,
+        dpr: 1,
+        nodes: [],
+        targetColors: null,
+        fromColors: null,
+        activeColors: null,
+        transitionStart: 0,
+        transitionMs: 1800,
+        maxDist: 0,
+        density: 0.00007, // nodes per pixel
+        maxNodes: 180,
+        minNodes: 60
+      };
+
+      function getCSSVar(name) {
+        const v = getComputedStyle(document.documentElement).getPropertyValue(name);
+        return (v || '').trim();
+      }
+
+      function hexToRgb(hex) {
+        if (!hex) return { r: 255, g: 255, b: 255 };
+        let h = hex.toString().trim();
+        if (h.startsWith('rgb')) {
+          // rgb or rgba
+          const m = h.match(/rgba?\(([^)]+)\)/);
+          if (m) {
+            const parts = m[1].split(',').map(s => parseFloat(s));
+            return { r: parts[0]|0, g: parts[1]|0, b: parts[2]|0 };
+          }
+        }
+        if (h[0] === '#') h = h.slice(1);
+        if (h.length === 3) {
+          h = h.split('').map(ch => ch + ch).join('');
+        }
+        const intVal = parseInt(h, 16);
+        if (Number.isNaN(intVal)) return { r: 255, g: 255, b: 255 };
+        return { r: (intVal >> 16) & 255, g: (intVal >> 8) & 255, b: intVal & 255 };
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+      function lerpRgb(a, b, t) {
+        return {
+          r: Math.round(lerp(a.r, b.r, t)),
+          g: Math.round(lerp(a.g, b.g, t)),
+          b: Math.round(lerp(a.b, b.b, t))
+        };
+      }
+
+      function rgbToCss(rgb, a = 1) {
+        return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${a})`;
+      }
+
+      function readPalette() {
+        return {
+          node: hexToRgb(getCSSVar('--color-pink')),
+          linkA: hexToRgb(getCSSVar('--color-cyan')),
+          linkB: hexToRgb(getCSSVar('--color-purple')),
+          glow: hexToRgb(getCSSVar('--color-blue')),
+          bg:   hexToRgb(getCSSVar('--color-bg'))
+        };
+      }
+
+      function updateTargetColors() {
+        const next = readPalette();
+        if (!state.activeColors) {
+          state.activeColors = next;
+          state.fromColors = next;
+          state.targetColors = next;
+          state.transitionStart = performance.now();
+          return;
+        }
+        state.fromColors = state.activeColors;
+        state.targetColors = next;
+        state.transitionStart = performance.now();
+      }
+
+      function updateActiveColors(now) {
+        const t = Math.min(1, (now - state.transitionStart) / state.transitionMs);
+        state.activeColors = {
+          node: lerpRgb(state.fromColors.node, state.targetColors.node, t),
+          linkA: lerpRgb(state.fromColors.linkA, state.targetColors.linkA, t),
+          linkB: lerpRgb(state.fromColors.linkB, state.targetColors.linkB, t),
+          glow: lerpRgb(state.fromColors.glow, state.targetColors.glow, t),
+          bg:   lerpRgb(state.fromColors.bg, state.targetColors.bg, t)
+        };
+      }
+
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createNodes(count) {
+        const nodes = new Array(count);
+        for (let i = 0; i < count; i++) {
+          nodes[i] = {
+            x: rand(0, state.w),
+            y: rand(0, state.h),
+            vx: rand(-0.25, 0.25),
+            vy: rand(-0.25, 0.25),
+            r: rand(1.2, 2.6)
+          };
+        }
+        return nodes;
+      }
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        state.dpr = dpr;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        state.w = w;
+        state.h = h;
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // density-based node count
+        const area = w * h;
+        const ideal = Math.floor(area * state.density);
+        const count = Math.max(state.minNodes, Math.min(state.maxNodes, ideal));
+        const old = state.nodes.length;
+        if (old === 0) {
+          state.nodes = createNodes(count);
+        } else if (count > old) {
+          state.nodes.push(...createNodes(count - old));
+        } else if (count < old) {
+          state.nodes.length = count;
+        }
+        state.maxDist = Math.max(64, Math.min(220, Math.sqrt(area) * 0.08));
+      }
+
+      function wrap(n) {
+        if (n.x < -10) {
+          n.x = state.w + 10;
+        } else if (n.x > state.w + 10) {
+          n.x = -10;
+        }
+
+        if (n.y < -10) {
+          n.y = state.h + 10;
+        } else if (n.y > state.h + 10) {
+          n.y = -10;
+        }
+      }
+
+      function step(dt) {
+        for (let i = 0; i < state.nodes.length; i++) {
+          const n = state.nodes[i];
+          n.x += n.vx * dt * 0.06; // speed normalized by time
+          n.y += n.vy * dt * 0.06;
+          wrap(n);
+        }
+      }
+
+      function draw(now) {
+        updateActiveColors(now);
+
+        // subtle trail fade
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = rgbToCss(state.activeColors.bg, 0.65);
+        ctx.fillRect(0, 0, state.w, state.h);
+
+        // Draw links
+        const maxD = state.maxDist;
+        const maxD2 = maxD * maxD;
+        for (let i = 0; i < state.nodes.length; i++) {
+          for (let j = i + 1; j < state.nodes.length; j++) {
+            const a = state.nodes[i];
+            const b = state.nodes[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const d2 = dx*dx + dy*dy;
+            if (d2 > maxD2) continue;
+            const d = Math.sqrt(d2);
+            const t = 1 - d / maxD; // 0..1
+            // blend link color between two accents based on angle for variety
+            const ang = Math.atan2(dy, dx);
+            const mix = (Math.sin(ang) + 1) * 0.5;
+            const linkRgb = {
+              r: Math.round(state.activeColors.linkA.r * (1 - mix) + state.activeColors.linkB.r * mix),
+              g: Math.round(state.activeColors.linkA.g * (1 - mix) + state.activeColors.linkB.g * mix),
+              b: Math.round(state.activeColors.linkA.b * (1 - mix) + state.activeColors.linkB.b * mix)
+            };
+            ctx.strokeStyle = rgbToCss(linkRgb, Math.max(0.12, t * 0.55));
+            ctx.lineWidth = 1.35 + t * 1.1;
+            ctx.lineCap = 'square';
+            ctx.setLineDash([2, 4]);
+            ctx.beginPath();
+            const ax = Math.round(a.x);
+            const ay = Math.round(a.y);
+            const bx = Math.round(b.x);
+            const by = Math.round(b.y);
+            ctx.moveTo(ax, ay);
+            ctx.lineTo(bx, by);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          }
+        }
+
+        // Draw nodes as pixel-snapped squares
+        ctx.fillStyle = rgbToCss(state.activeColors.node, 1.0);
+        ctx.shadowBlur = 0;
+        for (let i = 0; i < state.nodes.length; i++) {
+          const n = state.nodes[i];
+          const size = Math.max(2, Math.round(n.r * 2.2));
+          const x = Math.round(n.x - size / 2);
+          const y = Math.round(n.y - size / 2);
+          ctx.fillRect(x, y, size, size);
+        }
+      }
+
+      let last = performance.now();
+      function tick(now) {
+        const dt = Math.min(50, now - last); // cap to avoid jumps
+        last = now;
+        step(dt);
+        draw(now);
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function start() {
+        updateTargetColors();
+        resize();
+        last = performance.now();
+        rafId = requestAnimationFrame(tick);
+      }
+
+      let rafId = 0;
+      function stop() { cancelAnimationFrame(rafId); }
+
+      // Respond to theme changes (class changes on <html>)
+      const mo = new MutationObserver((mut) => {
+        for (const m of mut) {
+          if (m.type === 'attributes' && m.attributeName === 'class') {
+            updateTargetColors();
+          }
+        }
+      });
+      mo.observe(document.documentElement, { attributes: true });
+
+      // Also update colors periodically to catch manual CSS var changes
+      setInterval(() => updateTargetColors(), 20000);
+
+      window.addEventListener('resize', resize, { passive: true });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stop();
+        } else {
+          last = performance.now();
+          rafId = requestAnimationFrame(tick);
+        }
+      });
+
+      start();
+    })();
   </script>
 </html>
