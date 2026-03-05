@@ -252,61 +252,47 @@
 
     switchToAutoTheme();
 
-    // Animated background (Canvas 2D)
+    // Animated background – Renaissance cartography / celestial chart
     (() => {
       const canvas = document.getElementById('bg-canvas');
       if (!canvas || !canvas.getContext) return;
 
-      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) return;
 
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const state = {
-        w: 0,
-        h: 0,
-        dpr: 1,
-        nodes: [],
-        targetColors: null,
-        fromColors: null,
-        activeColors: null,
-        transitionStart: 0,
-        transitionMs: 1800,
-        maxDist: 0,
-        density: 0.00007, // nodes per pixel
-        maxNodes: 180,
-        minNodes: 60
-      };
+      const TAU = Math.PI * 2;
+
+      /* ── helpers ── */
 
       function getCSSVar(name) {
-        const v = getComputedStyle(document.documentElement).getPropertyValue(name);
-        return (v || '').trim();
+        return (getComputedStyle(document.documentElement).getPropertyValue(name) || '').trim();
       }
 
       function hexToRgb(hex) {
         if (!hex) return { r: 255, g: 255, b: 255 };
-        let h = hex.toString().trim();
+        let h = hex.trim();
         if (h.startsWith('rgb')) {
-          // rgb or rgba
           const m = h.match(/rgba?\(([^)]+)\)/);
           if (m) {
-            const parts = m[1].split(',').map(s => parseFloat(s));
-            return { r: parts[0]|0, g: parts[1]|0, b: parts[2]|0 };
+            const parts = m[1].split(',').map(Number);
+            return { r: parts[0] | 0, g: parts[1] | 0, b: parts[2] | 0 };
           }
         }
         if (h[0] === '#') h = h.slice(1);
-        if (h.length === 3) {
-          h = h.split('').map(ch => ch + ch).join('');
-        }
-        const intVal = parseInt(h, 16);
-        if (Number.isNaN(intVal)) return { r: 255, g: 255, b: 255 };
-        return { r: (intVal >> 16) & 255, g: (intVal >> 8) & 255, b: intVal & 255 };
+        if (h.length === 3) h = h.split('').map(c => c + c).join('');
+        const v = parseInt(h, 16);
+        if (Number.isNaN(v)) return { r: 255, g: 255, b: 255 };
+        return { r: (v >> 16) & 255, g: (v >> 8) & 255, b: v & 255 };
       }
 
       function lerp(a, b, t) {
         return a + (b - a) * t;
       }
+
       function lerpRgb(a, b, t) {
         return {
           r: Math.round(lerp(a.r, b.r, t)),
@@ -315,176 +301,746 @@
         };
       }
 
-      function rgbToCss(rgb, a = 1) {
+      function rgba(rgb, a) {
         return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${a})`;
       }
 
+      /* ── state ── */
+
+      const S = {
+        w: 0,
+        h: 0,
+        dpr: 1,
+        targetColors: null,
+        fromColors: null,
+        activeColors: null,
+        transitionStart: 0,
+        transitionMs: 2200,
+        stars: [],
+        cx: 0,
+        cy: 0,
+        baseR: 0
+      };
+
+      /* ── palette (reads current CSS theme variables) ── */
+
       function readPalette() {
         return {
-          node: hexToRgb(getCSSVar('--color-pink')),
-          linkA: hexToRgb(getCSSVar('--color-cyan')),
-          linkB: hexToRgb(getCSSVar('--color-purple')),
-          glow: hexToRgb(getCSSVar('--color-blue')),
-          bg:   hexToRgb(getCSSVar('--color-bg'))
+          line:   hexToRgb(getCSSVar('--color-lightgray')),
+          accent: hexToRgb(getCSSVar('--color-cyan')),
+          glow:   hexToRgb(getCSSVar('--color-blue')),
+          warm:   hexToRgb(getCSSVar('--color-red')),
+          dot:    hexToRgb(getCSSVar('--color-white')),
+          bg:     hexToRgb(getCSSVar('--color-bg'))
         };
       }
 
       function updateTargetColors() {
         const next = readPalette();
-        if (!state.activeColors) {
-          state.activeColors = next;
-          state.fromColors = next;
-          state.targetColors = next;
-          state.transitionStart = performance.now();
+        if (!S.activeColors) {
+          S.activeColors = next;
+          S.fromColors = next;
+          S.targetColors = next;
+          S.transitionStart = performance.now();
           return;
         }
-        state.fromColors = state.activeColors;
-        state.targetColors = next;
-        state.transitionStart = performance.now();
+        S.fromColors = { ...S.activeColors };
+        S.targetColors = next;
+        S.transitionStart = performance.now();
       }
 
       function updateActiveColors(now) {
-        const t = Math.min(1, (now - state.transitionStart) / state.transitionMs);
-        state.activeColors = {
-          node: lerpRgb(state.fromColors.node, state.targetColors.node, t),
-          linkA: lerpRgb(state.fromColors.linkA, state.targetColors.linkA, t),
-          linkB: lerpRgb(state.fromColors.linkB, state.targetColors.linkB, t),
-          glow: lerpRgb(state.fromColors.glow, state.targetColors.glow, t),
-          bg:   lerpRgb(state.fromColors.bg, state.targetColors.bg, t)
-        };
-      }
-
-      function rand(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      function createNodes(count) {
-        const nodes = new Array(count);
-        for (let i = 0; i < count; i++) {
-          nodes[i] = {
-            x: rand(0, state.w),
-            y: rand(0, state.h),
-            vx: rand(-0.25, 0.25),
-            vy: rand(-0.25, 0.25),
-            r: rand(1.2, 2.6)
-          };
+        const t = Math.min(1, (now - S.transitionStart) / S.transitionMs);
+        const c = {};
+        for (const k of Object.keys(S.fromColors)) {
+          c[k] = lerpRgb(S.fromColors[k], S.targetColors[k], t);
         }
-        return nodes;
+        S.activeColors = c;
       }
 
-      function resize() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        state.dpr = dpr;
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        state.w = w;
-        state.h = h;
-        canvas.width = Math.floor(w * dpr);
-        canvas.height = Math.floor(h * dpr);
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      /* ── star field ── */
 
-        // density-based node count
-        const area = w * h;
-        const ideal = Math.floor(area * state.density);
-        const count = Math.max(state.minNodes, Math.min(state.maxNodes, ideal));
-        const old = state.nodes.length;
-        if (old === 0) {
-          state.nodes = createNodes(count);
-        } else if (count > old) {
-          state.nodes.push(...createNodes(count - old));
-        } else if (count < old) {
-          state.nodes.length = count;
+      function makeStars(n) {
+        const stars = [];
+        for (let i = 0; i < n; i++) {
+          stars.push({
+            x: Math.random(),
+            y: Math.random(),
+            r: Math.random() * 1.2 + 0.3,
+            bright: Math.random() * 0.5 + 0.15,
+            phase: Math.random() * TAU,
+            speed: Math.random() * 0.3 + 0.1
+          });
         }
-        state.maxDist = Math.max(64, Math.min(220, Math.sqrt(area) * 0.08));
+        return stars;
       }
 
-      function wrap(n) {
-        if (n.x < -10) {
-          n.x = state.w + 10;
-        } else if (n.x > state.w + 10) {
-          n.x = -10;
-        }
+      /* ── concentric circles with tick marks ── */
 
-        if (n.y < -10) {
-          n.y = state.h + 10;
-        } else if (n.y > state.h + 10) {
-          n.y = -10;
-        }
-      }
+      function drawCircles(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
 
-      function step(dt) {
-        for (let i = 0; i < state.nodes.length; i++) {
-          const n = state.nodes[i];
-          n.x += n.vx * dt * 0.06; // speed normalized by time
-          n.y += n.vy * dt * 0.06;
-          wrap(n);
-        }
-      }
+        const rings = [0.18, 0.28, 0.38, 0.5, 0.62, 0.72, 0.85, 1.0, 1.15, 1.32, 1.5, 1.7];
 
-      function draw(now) {
-        updateActiveColors(now);
+        const partials = [
+          { ri: 0.44, start: 0.1, end: 0.85 },
+          { ri: 0.56, start: 1.2, end: 2.1 },
+          { ri: 0.78, start: 0.4, end: 1.6 },
+          { ri: 0.92, start: 2.5, end: 4.2 },
+          { ri: 1.08, start: 0.8, end: 2.0 },
+          { ri: 1.24, start: 3.0, end: 5.0 },
+          { ri: 1.42, start: 0.2, end: 1.1 },
+          { ri: 1.58, start: 1.5, end: 3.5 },
+        ];
 
-        // subtle trail fade
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = rgbToCss(state.activeColors.bg, 0.65);
-        ctx.fillRect(0, 0, state.w, state.h);
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot);
 
-        // Draw links
-        const maxD = state.maxDist;
-        const maxD2 = maxD * maxD;
-        for (let i = 0; i < state.nodes.length; i++) {
-          for (let j = i + 1; j < state.nodes.length; j++) {
-            const a = state.nodes[i];
-            const b = state.nodes[j];
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
-            const d2 = dx*dx + dy*dy;
-            if (d2 > maxD2) continue;
-            const d = Math.sqrt(d2);
-            const t = 1 - d / maxD; // 0..1
-            // blend link color between two accents based on angle for variety
-            const ang = Math.atan2(dy, dx);
-            const mix = (Math.sin(ang) + 1) * 0.5;
-            const linkRgb = {
-              r: Math.round(state.activeColors.linkA.r * (1 - mix) + state.activeColors.linkB.r * mix),
-              g: Math.round(state.activeColors.linkA.g * (1 - mix) + state.activeColors.linkB.g * mix),
-              b: Math.round(state.activeColors.linkA.b * (1 - mix) + state.activeColors.linkB.b * mix)
-            };
-            ctx.strokeStyle = rgbToCss(linkRgb, Math.max(0.12, t * 0.55));
-            ctx.lineWidth = 1.35 + t * 1.1;
-            ctx.lineCap = 'square';
-            ctx.setLineDash([2, 4]);
-            ctx.beginPath();
-            const ax = Math.round(a.x);
-            const ay = Math.round(a.y);
-            const bx = Math.round(b.x);
-            const by = Math.round(b.y);
-            ctx.moveTo(ax, ay);
-            ctx.lineTo(bx, by);
-            ctx.stroke();
-            ctx.setLineDash([]);
+        // Full circles
+        for (let i = 0; i < rings.length; i++) {
+          const r = rings[i] * baseR;
+          const fade = Math.max(0.08, 0.3 - i * 0.015);
+
+          ctx.beginPath();
+          ctx.arc(0, 0, r, 0, TAU);
+          ctx.strokeStyle = rgba(col.line, fade);
+          ctx.lineWidth = (i % 3 === 0) ? 1.0 : 0.6;
+          ctx.stroke();
+
+          // Tick marks on every other ring
+          if (i % 2 === 0) {
+            const tickCount = 36 + i * 12;
+            const tickLen = (i % 3 === 0) ? baseR * 0.025 : baseR * 0.015;
+            ctx.strokeStyle = rgba(col.line, fade * 1.2);
+            ctx.lineWidth = 0.5;
+            for (let t = 0; t < tickCount; t++) {
+              const a = (t / tickCount) * TAU;
+              ctx.beginPath();
+              ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r);
+              ctx.lineTo(Math.cos(a) * (r + tickLen), Math.sin(a) * (r + tickLen));
+              ctx.stroke();
+            }
           }
         }
 
-        // Draw nodes as pixel-snapped squares
-        ctx.fillStyle = rgbToCss(state.activeColors.node, 1.0);
-        ctx.shadowBlur = 0;
-        for (let i = 0; i < state.nodes.length; i++) {
-          const n = state.nodes[i];
-          const size = Math.max(2, Math.round(n.r * 2.2));
-          const x = Math.round(n.x - size / 2);
-          const y = Math.round(n.y - size / 2);
-          ctx.fillRect(x, y, size, size);
+        // Partial arcs for density and variety
+        for (const p of partials) {
+          const r = p.ri * baseR;
+          const fade = 0.18 + Math.sin(time * 0.0003 + p.ri * 5) * 0.05;
+          ctx.beginPath();
+          ctx.arc(0, 0, r, p.start, p.end);
+          ctx.strokeStyle = rgba(col.accent, Math.max(0.08, fade));
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+
+        // Dotted circle accents
+        const dottedRings = [0.33, 0.68, 1.1, 1.45];
+        for (const ri of dottedRings) {
+          const r = ri * baseR;
+          ctx.beginPath();
+          ctx.arc(0, 0, r, 0, TAU);
+          ctx.setLineDash([1, 6]);
+          ctx.strokeStyle = rgba(col.accent, 0.15);
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        ctx.restore();
+      }
+
+      /* ── meridian / radial lines ── */
+
+      function drawMeridians(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+        const outerR = baseR * 1.8;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot);
+
+        // Main radial lines (24 spokes)
+        const count = 24;
+        for (let i = 0; i < count; i++) {
+          const a = (i / count) * TAU;
+          const fade = (i % 6 === 0) ? 0.22 : (i % 3 === 0) ? 0.14 : 0.07;
+          const width = (i % 6 === 0) ? 0.9 : (i % 3 === 0) ? 0.6 : 0.4;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(Math.cos(a) * outerR, Math.sin(a) * outerR);
+          ctx.strokeStyle = rgba(col.line, fade);
+          ctx.lineWidth = width;
+          ctx.stroke();
+        }
+
+        // Secondary set with slight counter-rotation
+        ctx.rotate(time * 0.000015);
+        const count2 = 36;
+        for (let i = 0; i < count2; i++) {
+          const a = (i / count2) * TAU;
+          const innerR = baseR * (0.3 + Math.sin(i * 0.7) * 0.15);
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(a) * innerR, Math.sin(a) * innerR);
+          ctx.lineTo(Math.cos(a) * outerR * 0.7, Math.sin(a) * outerR * 0.7);
+          ctx.strokeStyle = rgba(col.line, 0.06);
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── globe-like latitude curves ── */
+
+      function drawLatitudes(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot + Math.PI * 0.25);
+
+        const latitudes = [-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6];
+        for (const lat of latitudes) {
+          const r = baseR * 1.1;
+          const yOff = lat * baseR * 0.8;
+          const scaleY = Math.sqrt(1 - lat * lat) * 0.5 + 0.15;
+
+          ctx.save();
+          ctx.translate(0, yOff);
+          ctx.scale(1, scaleY);
+          ctx.beginPath();
+          ctx.arc(0, 0, r, 0, TAU);
+          const fade = 0.1 + Math.abs(lat) * 0.05;
+          ctx.strokeStyle = rgba(col.line, fade);
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── rosette / filigree ornaments ── */
+
+      function drawRosette(ox, oy, size, time, layers) {
+        const col = S.activeColors;
+
+        ctx.save();
+        ctx.translate(ox, oy);
+        ctx.rotate(time * 0.00002);
+
+        for (let L = 0; L < layers; L++) {
+          const petals = 6 + L * 4;
+          const r = size * (0.3 + L * 0.22);
+          const fade = 0.16 - L * 0.025;
+          if (fade <= 0) continue;
+
+          // Petal arcs
+          for (let p = 0; p < petals; p++) {
+            const a = (p / petals) * TAU + L * 0.3;
+            const px = Math.cos(a) * r;
+            const py = Math.sin(a) * r;
+            ctx.beginPath();
+            ctx.arc(px, py, r * 0.4, 0, TAU);
+            ctx.strokeStyle = rgba(L % 2 === 0 ? col.line : col.accent, fade);
+            ctx.lineWidth = 0.4;
+            ctx.stroke();
+          }
+
+          // Connecting ring
+          ctx.beginPath();
+          ctx.arc(0, 0, r, 0, TAU);
+          ctx.strokeStyle = rgba(col.line, fade * 0.7);
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── stars ── */
+
+      function drawStars(time) {
+        const col = S.activeColors;
+        for (const s of S.stars) {
+          const x = s.x * S.w;
+          const y = s.y * S.h;
+          const twinkle = 0.5 + 0.5 * Math.sin(time * 0.001 * s.speed + s.phase);
+          const a = (s.bright + 0.15) * twinkle;
+          ctx.fillStyle = rgba(col.dot, a);
+          ctx.fillRect(Math.round(x), Math.round(y), Math.ceil(s.r), Math.ceil(s.r));
         }
       }
 
+      /* ── fine cross-hatching (engraved map texture) ── */
+
+      function drawCrossHatch(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot * 0.5);
+
+        // Diagonal hatch lines in a circular region
+        const r = baseR * 1.4;
+        const spacing = baseR * 0.06;
+        const count = Math.ceil(r * 2 / spacing);
+
+        ctx.strokeStyle = rgba(col.line, 0.04);
+        ctx.lineWidth = 0.3;
+
+        for (let i = 0; i < count; i++) {
+          const offset = -r + i * spacing;
+
+          // One diagonal direction
+          ctx.beginPath();
+          ctx.moveTo(offset, -r);
+          ctx.lineTo(offset + r * 0.5, r);
+          ctx.stroke();
+
+          // Other diagonal direction
+          ctx.beginPath();
+          ctx.moveTo(-r, offset);
+          ctx.lineTo(r, offset + r * 0.5);
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── compass rose ── */
+
+      function drawCompassRose(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+        const size = baseR * 0.12;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot);
+
+        // 8-pointed star
+        for (let i = 0; i < 8; i++) {
+          const a = (i / 8) * TAU;
+          const len = (i % 2 === 0) ? size : size * 0.55;
+          const fade = (i % 2 === 0) ? 0.2 : 0.12;
+
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(Math.cos(a) * len, Math.sin(a) * len);
+          ctx.strokeStyle = rgba(col.accent, fade);
+          ctx.lineWidth = (i % 2 === 0) ? 0.8 : 0.5;
+          ctx.stroke();
+
+          // Diamond tips on cardinal points
+          if (i % 2 === 0) {
+            const tipSize = size * 0.08;
+            const tx = Math.cos(a) * len;
+            const ty = Math.sin(a) * len;
+            const perp = a + Math.PI * 0.5;
+            ctx.beginPath();
+            ctx.moveTo(tx, ty);
+            ctx.lineTo(
+              tx - Math.cos(a) * tipSize * 2 + Math.cos(perp) * tipSize,
+              ty - Math.sin(a) * tipSize * 2 + Math.sin(perp) * tipSize
+            );
+            ctx.lineTo(
+              tx - Math.cos(a) * tipSize * 3,
+              ty - Math.sin(a) * tipSize * 3
+            );
+            ctx.lineTo(
+              tx - Math.cos(a) * tipSize * 2 - Math.cos(perp) * tipSize,
+              ty - Math.sin(a) * tipSize * 2 - Math.sin(perp) * tipSize
+            );
+            ctx.closePath();
+            ctx.strokeStyle = rgba(col.accent, 0.16);
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+
+        // Inner decorative rings
+        const innerRings = [0.25, 0.45, 0.7];
+        for (const frac of innerRings) {
+          ctx.beginPath();
+          ctx.arc(0, 0, size * frac, 0, TAU);
+          ctx.strokeStyle = rgba(col.line, 0.1);
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── rhumb lines (portolan chart style) ── */
+
+      function drawRhumbLines(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+        const outerR = baseR * 1.9;
+
+        // Secondary radiation points offset from center (like portolan charts)
+        const rhumbs = [
+          { x: cx - baseR * 0.55, y: cy - baseR * 0.35 },
+          { x: cx + baseR * 0.6,  y: cy + baseR * 0.3 },
+          { x: cx - baseR * 0.3,  y: cy + baseR * 0.5 },
+          { x: cx + baseR * 0.45, y: cy - baseR * 0.5 },
+        ];
+
+        ctx.save();
+        for (const pt of rhumbs) {
+          const count = 16;
+          for (let i = 0; i < count; i++) {
+            const a = (i / count) * TAU + rot * 0.3;
+            const fade = (i % 4 === 0) ? 0.1 : 0.04;
+            ctx.beginPath();
+            ctx.moveTo(pt.x, pt.y);
+            ctx.lineTo(pt.x + Math.cos(a) * outerR, pt.y + Math.sin(a) * outerR);
+            ctx.strokeStyle = rgba(col.line, fade);
+            ctx.lineWidth = 0.3;
+            ctx.stroke();
+          }
+
+          // Small circle at each rhumb origin
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, baseR * 0.02, 0, TAU);
+          ctx.strokeStyle = rgba(col.accent, 0.12);
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      /* ── constellation patterns (connected star groups) ── */
+
+      function drawConstellations(time) {
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+
+        // Pre-defined constellation shapes (normalized 0-1, placed in various regions)
+        const constellations = [
+          { ox: 0.78, oy: 0.65, scale: 0.06, stars: [[0,0],[0.4,0.2],[0.7,0.1],[1,0.4],[0.8,0.7]], edges: [[0,1],[1,2],[2,3],[3,4]] },
+          { ox: 0.25, oy: 0.35, scale: 0.05, stars: [[0,0.3],[0.3,0],[0.6,0.2],[0.5,0.6],[0.9,0.4]], edges: [[0,1],[1,2],[2,4],[1,3]] },
+          { ox: 0.85, oy: 0.15, scale: 0.04, stars: [[0,0],[0.5,0.3],[1,0],[0.5,0.8]], edges: [[0,1],[1,2],[1,3]] },
+          { ox: 0.65, oy: 0.85, scale: 0.05, stars: [[0,0],[0.3,0.4],[0.7,0.3],[1,0.7],[0.4,0.9]], edges: [[0,1],[1,2],[2,3],[3,4],[1,4]] },
+          { ox: 0.12, oy: 0.55, scale: 0.04, stars: [[0,0.5],[0.4,0],[0.8,0.3],[0.6,0.8]], edges: [[0,1],[1,2],[2,3],[0,3]] },
+        ];
+
+        ctx.save();
+        for (const c of constellations) {
+          const bx = c.ox * S.w;
+          const by = c.oy * S.h;
+          const s = c.scale * Math.min(S.w, S.h);
+
+          // Draw edges
+          ctx.strokeStyle = rgba(col.accent, 0.1);
+          ctx.lineWidth = 0.5;
+          for (const [a, b] of c.edges) {
+            const sa = c.stars[a];
+            const sb = c.stars[b];
+            ctx.beginPath();
+            ctx.moveTo(bx + sa[0] * s, by + sa[1] * s);
+            ctx.lineTo(bx + sb[0] * s, by + sb[1] * s);
+            ctx.stroke();
+          }
+
+          // Draw star nodes
+          for (let i = 0; i < c.stars.length; i++) {
+            const st = c.stars[i];
+            const sx = bx + st[0] * s;
+            const sy = by + st[1] * s;
+            const twinkle = 0.6 + 0.4 * Math.sin(time * 0.0008 + i * 2 + c.ox * 10);
+
+            // Star dot
+            ctx.fillStyle = rgba(col.dot, 0.3 * twinkle);
+            ctx.fillRect(Math.round(sx) - 1, Math.round(sy) - 1, 2, 2);
+
+            // Small cross on brighter stars
+            if (i === 0 || i === 2) {
+              ctx.strokeStyle = rgba(col.dot, 0.12 * twinkle);
+              ctx.lineWidth = 0.3;
+              const cr = 4;
+              ctx.beginPath();
+              ctx.moveTo(sx - cr, sy); ctx.lineTo(sx + cr, sy);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.moveTo(sx, sy - cr); ctx.lineTo(sx, sy + cr);
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.restore();
+      }
+
+      /* ── guilloche / spirograph curves ── */
+
+      function drawGuilloche(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+
+        // Spirograph-like parametric curves
+        const patterns = [
+          { R: baseR * 0.45, r: baseR * 0.13, d: baseR * 0.11, fade: 0.06, speed: 1 },
+          { R: baseR * 0.7,  r: baseR * 0.09, d: baseR * 0.08, fade: 0.05, speed: -0.7 },
+          { R: baseR * 1.05, r: baseR * 0.18, d: baseR * 0.15, fade: 0.04, speed: 0.5 },
+        ];
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot * 0.8);
+
+        for (const pat of patterns) {
+          ctx.beginPath();
+          const steps = 300;
+          for (let i = 0; i <= steps; i++) {
+            const t = (i / steps) * TAU * 6;
+            const x = (pat.R - pat.r) * Math.cos(t * pat.speed) + pat.d * Math.cos(((pat.R - pat.r) / pat.r) * t * pat.speed);
+            const y = (pat.R - pat.r) * Math.sin(t * pat.speed) - pat.d * Math.sin(((pat.R - pat.r) / pat.r) * t * pat.speed);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = rgba(col.accent, pat.fade);
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── corner cartouche flourishes ── */
+
+      function drawCartouches(time) {
+        const col = S.activeColors;
+        const margin = Math.min(S.w, S.h) * 0.06;
+        const size = Math.min(S.w, S.h) * 0.1;
+        const rot = time * 0.00003;
+
+        // Four corners
+        const corners = [
+          { x: margin,        y: margin,         rot: 0 },
+          { x: S.w - margin,  y: margin,         rot: Math.PI * 0.5 },
+          { x: S.w - margin,  y: S.h - margin,   rot: Math.PI },
+          { x: margin,        y: S.h - margin,   rot: Math.PI * 1.5 },
+        ];
+
+        for (const corner of corners) {
+          ctx.save();
+          ctx.translate(corner.x, corner.y);
+          ctx.rotate(corner.rot + rot);
+
+          // Scroll-like bracket curves
+          const curves = [
+            { cp1x: size * 0.4, cp1y: -size * 0.1, cp2x: size * 0.6, cp2y: size * 0.3, ex: size, ey: size * 0.1 },
+            { cp1x: -size * 0.1, cp1y: size * 0.4, cp2x: size * 0.3, cp2y: size * 0.6, ex: size * 0.1, ey: size },
+          ];
+
+          for (const c of curves) {
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.bezierCurveTo(c.cp1x, c.cp1y, c.cp2x, c.cp2y, c.ex, c.ey);
+            ctx.strokeStyle = rgba(col.line, 0.14);
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+
+          // Small decorative circles along the curves
+          for (let i = 0; i < 3; i++) {
+            const t = (i + 1) * 0.25;
+            const r = size * 0.015 + i * size * 0.008;
+            const x = t * size * 0.8;
+            const y = t * t * size * 0.3;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, TAU);
+            ctx.strokeStyle = rgba(col.accent, 0.1);
+            ctx.lineWidth = 0.3;
+            ctx.stroke();
+          }
+
+          // Corner ornament — nested arcs
+          for (let i = 1; i <= 3; i++) {
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 0.12 * i, 0, Math.PI * 0.5);
+            ctx.strokeStyle = rgba(col.line, 0.1 - i * 0.02);
+            ctx.lineWidth = 0.4;
+            ctx.stroke();
+          }
+
+          ctx.restore();
+        }
+      }
+
+      /* ── degree markings on key rings ── */
+
+      function drawDegreeMarks(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const rot = time * 0.00004;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot);
+
+        // Degree labels on the 1.0 baseR ring
+        const r = baseR * 1.0;
+        const majorInterval = 30; // every 30 degrees
+        ctx.font = `${Math.max(7, baseR * 0.022)}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        for (let deg = 0; deg < 360; deg += majorInterval) {
+          const a = (deg / 360) * TAU - Math.PI * 0.5; // 0° at top
+          const labelR = r + baseR * 0.04;
+          const x = Math.cos(a) * labelR;
+          const y = Math.sin(a) * labelR;
+
+          ctx.fillStyle = rgba(col.line, 0.18);
+          ctx.fillText(deg + '°', x, y);
+
+          // Major tick
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(a) * (r - baseR * 0.015), Math.sin(a) * (r - baseR * 0.015));
+          ctx.lineTo(Math.cos(a) * (r + baseR * 0.015), Math.sin(a) * (r + baseR * 0.015));
+          ctx.strokeStyle = rgba(col.line, 0.25);
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+
+        // Minor ticks every 10 degrees
+        for (let deg = 0; deg < 360; deg += 10) {
+          if (deg % majorInterval === 0) continue;
+          const a = (deg / 360) * TAU - Math.PI * 0.5;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(a) * (r - baseR * 0.008), Math.sin(a) * (r - baseR * 0.008));
+          ctx.lineTo(Math.cos(a) * (r + baseR * 0.008), Math.sin(a) * (r + baseR * 0.008));
+          ctx.strokeStyle = rgba(col.line, 0.12);
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      /* ── center vignette / fog ── */
+
+      function drawVignette() {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const grad = ctx.createRadialGradient(cx, cy, baseR * 0.4, cx, cy, baseR * 1.8);
+        grad.addColorStop(0, rgba(col.bg, 0.0));
+        grad.addColorStop(0.6, rgba(col.bg, 0.1));
+        grad.addColorStop(1, rgba(col.bg, 0.5));
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, S.w, S.h);
+      }
+
+      /* ── crosshair reticle at center ── */
+
+      function drawReticle(time) {
+        const { cx, cy, baseR } = S;
+        const col = S.activeColors;
+        const pulse = 0.5 + 0.5 * Math.sin(time * 0.0008);
+        const fade = 0.12 + pulse * 0.06;
+        const len = baseR * 0.06;
+
+        ctx.strokeStyle = rgba(col.accent, fade);
+        ctx.lineWidth = 0.6;
+
+        // Horizontal
+        ctx.beginPath();
+        ctx.moveTo(cx - len, cy);
+        ctx.lineTo(cx + len, cy);
+        ctx.stroke();
+
+        // Vertical
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - len);
+        ctx.lineTo(cx, cy + len);
+        ctx.stroke();
+
+        // Small center circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, baseR * 0.015, 0, TAU);
+        ctx.stroke();
+
+        // Outer reticle circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, baseR * 0.05, 0, TAU);
+        ctx.strokeStyle = rgba(col.accent, fade * 0.6);
+        ctx.stroke();
+      }
+
+      /* ── resize ── */
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        S.dpr = dpr;
+        S.w = window.innerWidth;
+        S.h = window.innerHeight;
+
+        canvas.width = Math.floor(S.w * dpr);
+        canvas.height = Math.floor(S.h * dpr);
+        canvas.style.width = S.w + 'px';
+        canvas.style.height = S.h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Center offset slightly up-right like the reference image
+        S.cx = S.w * 0.52;
+        S.cy = S.h * 0.45;
+        S.baseR = Math.max(S.w, S.h) * 0.38;
+
+        if (S.stars.length === 0) {
+          S.stars = makeStars(Math.min(350, Math.floor(S.w * S.h * 0.00015)));
+        }
+      }
+
+      /* ── main draw (composites all layers) ── */
+
+      function draw(now) {
+        updateActiveColors(now);
+        const col = S.activeColors;
+
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = rgba(col.bg, 1);
+        ctx.fillRect(0, 0, S.w, S.h);
+
+        // Layers back-to-front
+        drawStars(now);
+        drawCrossHatch(now);
+        drawRhumbLines(now);
+        drawLatitudes(now);
+        drawMeridians(now);
+        drawGuilloche(now);
+        drawCircles(now);
+        drawDegreeMarks(now);
+        drawConstellations(now);
+        drawRosette(S.w * 0.08, S.h * 0.75, S.baseR * 0.35, now, 5);
+        drawRosette(S.w * 0.92, S.h * 0.2, S.baseR * 0.2, now, 4);
+        drawRosette(S.w * 0.15, S.h * 0.15, S.baseR * 0.15, now, 3);
+        drawCartouches(now);
+        drawCompassRose(now);
+        drawReticle(now);
+        drawVignette();
+      }
+
+      /* ── animation loop ── */
+
       let last = performance.now();
+      let rafId = 0;
+
       function tick(now) {
-        const dt = Math.min(50, now - last); // cap to avoid jumps
-        last = now;
-        step(dt);
         draw(now);
         rafId = requestAnimationFrame(tick);
       }
@@ -496,12 +1052,13 @@
         rafId = requestAnimationFrame(tick);
       }
 
-      let rafId = 0;
-      function stop() { cancelAnimationFrame(rafId); }
+      function stop() {
+        cancelAnimationFrame(rafId);
+      }
 
       // Respond to theme changes (class changes on <html>)
-      const mo = new MutationObserver((mut) => {
-        for (const m of mut) {
+      const mo = new MutationObserver((muts) => {
+        for (const m of muts) {
           if (m.type === 'attributes' && m.attributeName === 'class') {
             updateTargetColors();
           }
@@ -509,7 +1066,6 @@
       });
       mo.observe(document.documentElement, { attributes: true });
 
-      // Also update colors periodically to catch manual CSS var changes
       setInterval(() => updateTargetColors(), 20000);
 
       window.addEventListener('resize', resize, { passive: true });
