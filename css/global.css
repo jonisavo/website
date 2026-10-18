@@ -90,21 +90,6 @@ html.palette-cyberdark {
   --color-gray: #4d4d4d;
 }
 
-/* Solarized Dark palette */
-html.palette-solarized-dark {
-  --color-bg: #002b36;
-  --color-red: #dc322f;
-  --color-green: #859900;
-  --color-blue: #268bd2;
-  --color-purple: #6c71c4;
-  --color-pink: #d33682;
-  --color-orange: #cb4b16;
-  --color-cyan: #2aa198;
-  --color-white: #eee8d5;
-  --color-lightgray: #93a1a1;
-  --color-gray: #586e75;
-}
-
 /* Monokai palette */
 html.palette-monokai {
   --color-bg: #272822;
