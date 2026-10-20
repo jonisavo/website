@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="robots" content="noindex"/>
+    <title>yay!</title>
+    <link rel="icon" type="image/png" href="/img/icon.png"/>
+    <link rel="stylesheet" href="/css/global.css"/>
+    <link rel="stylesheet" href="/css/yay.css"/>
+    <script src="/yay/yay.js" defer></script>
+  </head>
+  <body>
+    <main class="yay-page">
+      <button class="yay-button" id="yay-button" type="button" aria-label="Yay! Play a cheer" aria-describedby="yay-hint" disabled>
+        <img id="thumb" src="/yay/thumbs-up.svg" width="320" height="320" alt="" draggable="false"/>
+      </button>
+      <h1>yay!</h1>
+      <p id="yay-hint">
+        [ click for a yay ]
+        <svg class="yay-arrow" viewBox="0 0 100 150" aria-hidden="true" focusable="false">
+          <path d="M56 145 C26 141 8 125 13 99 C18 71 24 57 36 29 M21 35 L36 29 L38 45"/>
+        </svg>
+      </p>
+      <p id="sound-status" role="status"></p>
+      <noscript><p>Turn on JavaScript for a yay.</p></noscript>
+    </main>
+    <div id="confetti" aria-hidden="true"></div>
+    <audio id="cheer" src="/yay/cheer.mp3" preload="auto"></audio>
+  </body>
+</html>

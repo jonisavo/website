@@ -1,0 +1,189 @@
+.yay-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.yay-button {
+  position: relative;
+  isolation: isolate;
+  width: min(320px, 100%);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.yay-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(480px, calc(100vw - 16px));
+  height: 150%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 244, 200, 0.2) 0%,
+    rgba(255, 223, 112, 0.1) 30%,
+    rgba(255, 202, 112, 0.03) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 700ms ease-in-out;
+  pointer-events: none;
+}
+
+.yay-button.is-glowing::before {
+  opacity: 1;
+  transition-duration: 400ms;
+}
+
+.yay-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 120ms steps(2, end), filter 700ms ease-in-out;
+}
+
+.yay-button.is-glowing img {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 244, 200, 0.4))
+    drop-shadow(0 0 24px rgba(255, 223, 112, 0.2));
+  transition-duration: 120ms, 400ms;
+}
+
+.yay-button:focus-visible {
+  outline: 2px dashed var(--color-pink);
+  outline-offset: 8px;
+}
+
+@media (hover: hover) {
+  .yay-button:hover img {
+    transform: rotate(-4deg);
+  }
+}
+
+.yay-button:active img {
+  transform: translateY(5px);
+}
+
+.yay-button:disabled {
+  cursor: default;
+}
+
+.yay-page h1 {
+  margin: 12px 0 4px;
+  font-size: 48px;
+  color: var(--color-pink);
+  transition: text-shadow 700ms ease-in-out;
+}
+
+.yay-button.is-glowing + h1 {
+  text-shadow:
+    0 0 6px rgba(255, 244, 200, 0.35),
+    0 0 20px rgba(255, 85, 255, 0.3),
+    0 0 44px rgba(255, 223, 112, 0.25);
+  transition-duration: 400ms;
+}
+
+#yay-hint {
+  position: relative;
+  color: var(--color-lightgray);
+  font-size: 14px;
+}
+
+.yay-arrow {
+  position: absolute;
+  top: -150px;
+  left: -70px;
+  width: 100px;
+  height: 150px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+#sound-status {
+  min-height: 1.5em;
+  max-width: 32ch;
+  margin-bottom: 0;
+  color: var(--color-lightgray);
+  font-size: 12px;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  animation:
+    confetti-drift var(--duration) linear forwards,
+    confetti-fall var(--duration) forwards;
+}
+
+@keyframes confetti-drift {
+  from {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  to {
+    translate: var(--x) 0;
+    rotate: var(--rotation);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.33, 0.67, 0.67, 1);
+  }
+  25% {
+    transform: translateY(var(--rise));
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0.33);
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(var(--fall));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yay-button::before,
+  .yay-page h1 {
+    transition: none;
+  }
+
+  .yay-button img {
+    transition: none;
+    transform: none !important;
+  }
+
+  #confetti {
+    display: none;
+  }
+}
